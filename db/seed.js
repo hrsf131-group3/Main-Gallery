@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 let Schema = require('./schema.js');
 
-mongoose.connect('mongodb://localhost/main-gallery');
+//mongoose.connect('mongodb://localhost/main-gallery');
 
 // TODO:
 // 1) Take out hardcoded data and create helper functions to generate inputs.

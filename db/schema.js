@@ -20,5 +20,10 @@ function write(listing, callback) {
   ListingsModel.create(listing, callback)
 }
 
+function getAllListings(callback) {
+  ListingsModel.find({}, callback);
+}
+
 module.exports.ListingsModel = ListingsModel;
 module.exports.write = write;
+exports.getAllListings = getAllListings;
