@@ -4,12 +4,17 @@ mongoose.connect('mongodb://localhost/main-gallery-listings');
 
 const listingSchema = mongoose.Schema ({
   listing_id: Number,
-  topHeader: String,
+  topHeader: {
+    sale: Boolean,
+    pending: Boolean,
+    new: Boolean,
+    construction: Boolean,
+  },
   address: String,
   price: Number,
   bed: Number,
   bath: Number,
-  images: [ { type: String } ],
+  images: Array,
 
 })
 

@@ -4,7 +4,7 @@ getListings = (req, res) => {
   Listing.getAllListings( (err, listings) => {
    if (err) {
       res.status(400).json({
-       success:false,
+       success: false,
        error: err
      })
    }
