@@ -1,22 +1,30 @@
 let Listing = require('../db/schema.js');
 
-getListings = (req, res) => {
-  Listing.getAllListings( (err, listings) => {
-   if (err) {
-      res.status(400).json({
-       success: false,
-       error: err
-     })
-   }
-     return res.status(200).json({
-       success: true,
-       data: listings
-     })
-     .catch(err => console.log(err))
-   }
- )
-}
+/* eslint-disable array-callback-return */
+const schema = require('../db/schema.js');
+const mongo = require('../db/mongo');
 
 module.exports = {
-  getListings
-}
+  get: (req, res) => {
+    mongo.connect();
+    query.findOne((err, data) => {
+      if (err) {
+        res.status(404);
+      } else {
+        res.status(200).send(data);
+        mongo.db.close();
+      }
+    });
+  },
+  getAll: (req, res) => {
+    mongo.connect();
+    schema.getAllListings.find((err, data) => {
+      if (err) {
+        res.status(404);
+      } else {
+        res.status(200).send(data);
+        mongo.db.close();
+      }
+    });
+  },
+};
