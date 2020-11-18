@@ -47,6 +47,7 @@ class Modal extends React.Component {
           <div className="listing-details">
           <p>33256 Pacific Coast Hwy | $125,000,000 | 7 Beds 10 Baths</p>
           </div>
+          <ModalGallery />
           <div className="modal-gallery">
             <div className="two-row">
             </div>

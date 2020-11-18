@@ -29,7 +29,6 @@ class Gallery extends React.Component {
       </div>
       <Modal show={this.state.show}
       handleClose={this.toggleModal}
-
       >
       </Modal>
     </div>
