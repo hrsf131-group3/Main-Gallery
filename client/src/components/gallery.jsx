@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal from './galleryModal.jsx';
+import Modal from './modal.jsx';
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class Gallery extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
   toggleModal(event) {
+    event.preventDefault();
     this.setState({
       show: !this.state.show
     });
@@ -26,7 +27,10 @@ class Gallery extends React.Component {
           <img className="right-bottom-main-photo" src="test-image3.jpg"/>
         </div>
       </div>
-      <Modal show={this.state.show} handleClose={this.toggleModal} centered>
+      <Modal show={this.state.show}
+      handleClose={this.toggleModal}
+
+      >
       </Modal>
     </div>
 
