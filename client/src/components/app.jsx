@@ -7,29 +7,34 @@ import Gallery from './gallery.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
-
+    this.state = {
+      listing: []
+    }
   }
-
-  // componentDidMount() {
-  //   //udpate to axios get request to get the dummy data from the server side
-  //   //this.setState({groceries: dummyData})
-  //   axios.get('http://localhost:3000/groceries')
-  //   .then((res) => {
-  //     console.log(res);
-  //     this.setState({groceries: res.data})
-  //   })
-  //   .catch((err) => {
-  //     conosle.log(err);
-  //   });
-  // }
+  componentDidMount() {
+    //udpate to axios get request to get the dummy data from the server side
+    //this.setState({groceries: dummyData})
+    axios.get(`${window.location}db`)
+    //http://localhost:8040/listings/1/
+    .then((res) => {
+      this.setState({listing: res.data[0]})
+      console.log('res.data', res.data[0])
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+getListing(id) {
+  let listing = this.state;
+  console.log('get listing function:', listing)
+}
 
   render() {
     return (
       <div>
         <Navbar />
-        <Details />
-        <Gallery />
+        <Details listing={this.state.listing}/>
+        <Gallery listing={this.state.listing}/>
       </div>
     )
   }

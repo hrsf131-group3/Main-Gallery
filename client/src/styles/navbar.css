@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
+  letter-spacing: -0.1px;
+  overflow-x: hidden;
+}
+.nav-bar {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #E8E9EA;
+  padding: 0px 16px 0px 16px;
+}
+.trulia-logo-box {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: 94px;
+  height: 63px;
+  padding: 16px 24px 16px 0px;
+  margin-left: 10px;
+}
+.trulia-logo {
+  box-sizing: border-box;
+  width: 100%;
+}

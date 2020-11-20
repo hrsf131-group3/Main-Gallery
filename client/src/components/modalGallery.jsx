@@ -1,6 +1,7 @@
 import React from 'react';
+import styles from '../styles/modalGallery.css';
 
-class Modal extends React.Component {
+class GalleryModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -8,15 +9,21 @@ class Modal extends React.Component {
 
   render() {
     return (
-        <div className="modal-gallery">
-          <div className="two-row">
+        <div className={styles['modal-gallery']}>
+          <div className={styles['two-row']}>
+            <img className={styles['two-left-photo']} src="test-image2.jpg"/>
+            <img className={styles['two-right-photo']} src="test-image3.jpg"/>
           </div>
-          <div className="three-row">
+          <div className={styles['three-row']}>
+            <img className={styles['three-left-photo']} src="test-image.jpg"/>
+            <img className={styles['three-middle-photo']} src="test-image2.jpg"/>
+            <img className={styles['three-right-photo']} src="test-image3.jpg"/>
           </div>
-          <div className="one-row">
+          <div className={styles['one-row']}>
+            <img className={styles['one-photo']} src="test-image.jpg"/>
           </div>
         </div>
     );
   };
 }
-export default Modal;
+export default GalleryModal;

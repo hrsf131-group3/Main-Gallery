@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
-const url = 'mongodb://localhost/mortgage';
+const url = 'mongodb://localhost/main-gallery-listings';
 
 const connect = () => mongoose.connect(url, { useNewUrlParser: true });
 

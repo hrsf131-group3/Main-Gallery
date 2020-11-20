@@ -1,0 +1,41 @@
+.gallery-container {
+  margin: 0px 0px 0px 0px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  height: 446px; /* 446 */
+  width: 994; /* 994 */
+  overflow: hidden;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+.zoom {
+  display: inherit;
+  transition: transform .5s ease;
+}
+.right-main-gallery {
+  flex-direction: column;
+  overflow: hidden;
+  flex: 2;
+  box-sizing: inherit;
+}
+.left-main-photo {
+  height: 446px;
+  width: 737;
+  margin-right: 6px;
+
+}
+.right-top-main-photo {
+  height: 220px;
+  width: 250;
+
+}
+.right-bottom-main-photo {
+  margin-top: 6px;
+  height: 220px;
+  width: 250;
+
+}
+.zoom:hover {
+  transform: scale(1.04);
+}

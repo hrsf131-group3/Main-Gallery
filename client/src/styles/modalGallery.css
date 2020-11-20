@@ -1,0 +1,38 @@
+.modal-gallery {
+  display: grid;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 82%;
+  width: 99%;
+  border: 1px solid white;
+  border-radius: 8px;
+  justify-content: center;
+  margin: 8px 8px 8px 8px;
+}
+.two-right-photo {
+  width: 49.5%;
+  margin-bottom: 8px;
+
+}
+.two-left-photo {
+  width: 49.5%;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+.three-left-photo {
+  width: 32.8%;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+.three-middle-photo {
+  width: 32.8%;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+.three-right-photo {
+  width: 32.9%;
+  margin-bottom: 8px;
+}
+.one-photo {
+  width: 99.9%;
+}

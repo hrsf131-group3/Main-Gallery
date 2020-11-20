@@ -1,5 +1,7 @@
-import React from 'react'
+import React from 'react';
 import Modal from './modal.jsx';
+import styles from '../styles/gallery.css';
+
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -17,14 +19,14 @@ class Gallery extends React.Component {
   }
   render() {
     return (
-      <div className="gallery-container" onClick={this.toggleModal}>
-        <div className="zoom">
-          <div className="left-main-gallery">
-            <img className="left-main-photo" src="test-image.jpg"/>
+      <div className={styles['gallery-container']} onClick={this.toggleModal}>
+        <div className={styles.zoom}>
+          <div className={styles['left-main-gallery']}>
+            <img className={styles['left-main-photo']} src="test-image.jpg"/>
           </div>
-        <div className="right-main-gallery">
-          <img className="right-top-main-photo" src="test-image2.jpg"/>
-          <img className="right-bottom-main-photo" src="test-image3.jpg"/>
+        <div className={styles['right-main-gallery']}>
+          <img className={styles['right-top-main-photo']}src="test-image2.jpg"/>
+          <img className={styles['right-bottom-main-photo']} src="test-image3.jpg"/>
         </div>
       </div>
       <Modal show={this.state.show}

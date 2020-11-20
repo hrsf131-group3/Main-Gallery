@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
+var mongo = require('./mongo.js');
 
 mongoose.connect('mongodb://localhost/main-gallery-listings');
 
-const listingSchema = mongoose.Schema ({
+var listingSchema = mongoose.Schema ({
   listing_id: Number,
   topHeader: {
     sale: Boolean,
@@ -30,5 +31,5 @@ function getAllListings(callback) {
 }
 
 module.exports.ListingsModel = ListingsModel;
-module.exports.write = write;
+// module.exports.write = write;
 exports.getAllListings = getAllListings;

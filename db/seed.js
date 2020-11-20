@@ -10,7 +10,7 @@ let faker = require('faker');
 // 2) Drop database before wrtiting to again.
 
 
-function createRecord(listingID, address, images) {
+function createRecord(listingID, address, price, bed, bath, images) {
   const listing = {
     listing_id: listingID,
     topHeader: {
@@ -20,41 +20,42 @@ function createRecord(listingID, address, images) {
       construction: 0,
     },
     address: address,
-    price: 100999,
-    bed: getRandomInt(2, 8),
-    bath: getRandomInt(2, 4),
+    price: price,
+    bed: bed,
+    bath: bath,
     images: images,
   }
   return listing;
 }
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+
+// function getRandomInt(min, max) {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
 
 function listingGalleryGenerator(currentFolder) {
   let images = [];
   if(currentFolder === 1) {
     let counter = 1;
-    while(counter <= 153) {
-      let url = `https://s3-us-west-1.amazonaws.com/hackreactor.fec.trulia.photos/Inside1/inside-1-${counter}.jpg`
+    while(counter <= 77) {
+      let url = `https://s3-us-west-1.amazonaws.com/hackreactor.fec.trulia.photos/Home1/Home-1-${counter}.jpg`
       images.push(url)
       counter++;
     }
   } else {
     if(currentFolder === 2) {
       let counter = 1;
-      while(counter <= 204) {
-      let url = `https://s3-us-west-1.amazonaws.com/hackreactor.fec.trulia.photos/Inside2/inside-2-${counter}.jpg`
+      while(counter <= 31) {
+      let url = `https://s3-us-west-1.amazonaws.com/hackreactor.fec.trulia.photos/Home2/Home-2-${counter}.jpg`
       images.push(url)
       counter++;
       }
     } else {
     if(currentFolder === 3) {
       let counter = 1;
-      while(counter <= 204) {
-        let url = `https://s3-us-west-1.amazonaws.com/hackreactor.fec.trulia.photos/Inside3/inside-3-${counter}.jpg`
+      while(counter <= 39) {
+        let url = `https://s3-us-west-1.amazonaws.com/hackreactor.fec.trulia.photos/Home3/Home-3-${counter}.jpg`
         images.push(url)
         counter++;
         }
@@ -67,16 +68,32 @@ function listingGalleryGenerator(currentFolder) {
 function seedDB(entries) {
   let created = 1;
   let folder = 1;
+  let price = 1875000;
+  let bed = 4;
+  let bath = 3;
   while (created <= 100) {
     // Image folder assignment and url generator
     let images = listingGalleryGenerator(folder);
+    if(folder === 1) {
+      price = 1875000;
+      bed = 4;
+      bath = 3;
+    }
+    if(folder === 2) {
+      price = 65000000;
+      bed = 10;
+      bath = 7;
+    }
     if(folder === 3) {
+      price = 1495000;
+      bed = 4;
+      bath = 2;
       folder = 0;
     }
     // Faker address
     var address = faker.address.streetAddress();
     // Call to write to database
-    Schema.write(createRecord(created, address, images), (err, data) => {
+    Schema.write(createRecord(created, address, price, bed, bath, images), (err, data) => {
       if (err) {
        console.log('insert failed', err)
      } else {
