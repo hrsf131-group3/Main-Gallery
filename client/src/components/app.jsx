@@ -13,6 +13,7 @@ class App extends React.Component {
       listing: []
     }
     this.nextListing = this.nextListing.bind(this);
+    this.previousListing = this.previousListing.bind(this);
   }
 
   componentDidMount() {
@@ -31,7 +32,12 @@ class App extends React.Component {
   nextListing(event) {
     let url = window.location.href
     console.log('HREF: ', url, '     ',this.state.listing[0].listing_id);
-    let id = this.state.listing[0].listing_id + 1;
+    let id = this.state.listing[0].listing_id
+    if (id === 100) {
+      id = 1;
+    } else {
+      id++;
+    }
     window.location.assign(`http://localhost:8040/listings/${id}/`)
     console.log('URL: ', `http://localhost:8040/listings/${id}/`)
     axios.get(`http://localhost:8040/listings/${id}/db`)
@@ -43,7 +49,24 @@ class App extends React.Component {
       console.log(err);
     });
   }
-
+  previousListing(event) {
+    let url = window.location.href
+    console.log('HREF: ', url, '     ',this.state.listing[0].listing_id);
+    let id = this.state.listing[0].listing_id - 1;
+    if (id === 0) {
+      id = 100;
+    }
+    window.location.assign(`http://localhost:8040/listings/${id}/`)
+    console.log('URL: ', `http://localhost:8040/listings/${id}/`)
+    axios.get(`http://localhost:8040/listings/${id}/db`)
+    //http://localhost:8040/listings/1/
+    .then((res) => {
+      this.setState({listing: res.data})
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 
 
   render() {
@@ -58,7 +81,7 @@ class App extends React.Component {
         <Gallery listing={this.state.listing}/>
         <div className={styles['navbar']}>
           <div className={styles['nav-btn-box']}>
-          <button className={styles['nav-btn']}>Previous</button>
+          <button className={styles['nav-btn']} onClick={this.previousListing}>Previous</button>
           </div>
           <div className={styles['nav-btn-box']}>
             <button className={styles['nav-btn']} onClick={this.nextListing}>Next</button>
