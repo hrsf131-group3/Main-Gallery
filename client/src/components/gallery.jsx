@@ -18,6 +18,8 @@ class Gallery extends React.Component {
     });
   }
   render() {
+    // var images = this.props.listing[0]
+    // console.log('Is this an Array?' , typeof images)
     return (
       <div className={styles['gallery-container']} onClick={this.toggleModal}>
         <div className={styles.zoom}>

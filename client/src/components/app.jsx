@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Redirect from './Redirect.jsx';
 import Navbar from './navbar.jsx';
 import Details from './details.jsx';
 import Gallery from './gallery.jsx';
@@ -17,19 +18,18 @@ class App extends React.Component {
     axios.get(`${window.location}db`)
     //http://localhost:8040/listings/1/
     .then((res) => {
-      this.setState({listing: res.data[0]})
-      console.log('res.data', res.data[0])
+      this.setState({listing: res.data})
     })
     .catch((err) => {
       console.log(err);
     });
   }
-getListing(id) {
-  let listing = this.state;
-  console.log('get listing function:', listing)
-}
+
 
   render() {
+    if (this.state.listing.length === 0) {
+      return <div><Redirect /></div>
+    }
     return (
       <div>
         <Navbar />

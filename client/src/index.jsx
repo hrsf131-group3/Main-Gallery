@@ -1,5 +1,7 @@
 import App from './components/app.jsx'
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-ReactDOM.render(<App />, document.getElementById('app'))
+console.log('Ran in index');
+ReactDOM.render(
+  <App />
+, document.getElementById('app'))
