@@ -9,6 +9,7 @@
   backdrop-filter: blur(5px) grayscale(50%);
 }
 .modal-main {
+  overflow: hidden;
   box-sizing:border-box;
   display: inline-block;
   position: absolute;

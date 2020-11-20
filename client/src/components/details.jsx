@@ -1,13 +1,15 @@
 import React from 'react';
 import styles from '../styles/details.css';
 
-const Details = (listing) => (
-  <div className={styles['details-bar']}>
+const Details = (listing) => {
+  return (
+    <div className={styles['details-bar']}>
     <div className={styles['details-bar-box']}>
-      <p>{listing.listing.address}</p>
+      <p>{listing.listing[0].address}</p>
     </div>
   </div>
-)
+  )
+}
 
 
 export default Details;

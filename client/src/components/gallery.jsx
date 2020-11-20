@@ -18,21 +18,21 @@ class Gallery extends React.Component {
     });
   }
   render() {
-    // var images = this.props.listing[0]
-    // console.log('Is this an Array?' , typeof images)
+    let images = this.props.listing[0].images;
     return (
       <div className={styles['gallery-container']} onClick={this.toggleModal}>
         <div className={styles.zoom}>
           <div className={styles['left-main-gallery']}>
-            <img className={styles['left-main-photo']} src="test-image.jpg"/>
+            <img className={styles['left-main-photo']} src={images[0]}/>
           </div>
         <div className={styles['right-main-gallery']}>
-          <img className={styles['right-top-main-photo']}src="test-image2.jpg"/>
-          <img className={styles['right-bottom-main-photo']} src="test-image3.jpg"/>
+          <img className={styles['right-top-main-photo']}src={images[1]}/>
+          <img className={styles['right-bottom-main-photo']} src={images[2]}/>
         </div>
       </div>
       <Modal show={this.state.show}
       handleClose={this.toggleModal}
+      listing={this.props.listing[0]}
       >
       </Modal>
     </div>

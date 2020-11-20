@@ -9,6 +9,12 @@ class Modal extends React.Component {
 
   render() {
     const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
+
+    let price = this.props.listing.price;
+    let numberWithCommas = (x) => {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     return (
       <div className={this.props.show ? `${styles.modal} ${styles['display-block']}` : `${styles.modal} ${styles['display-none']}`} >
          <div className={styles['modal-main']} onClick={e => e.stopPropagation()}> { /* stopPropagation on the main modal will stop closing when clicked with in the modal.  */ }
@@ -46,9 +52,9 @@ class Modal extends React.Component {
             </div>
           </div>
           <div className={styles['listing-details']}>
-          <p>33256 Pacific Coast Hwy | $125,000,000 | 7 Beds 10 Baths</p>
+          <p>{this.props.listing.address} | ${numberWithCommas(price)} | {this.props.listing.bed} Beds {this.props.listing.bath} Baths</p>
           </div>
-          <GalleryModal />
+          <GalleryModal listing={this.props.listing}/>
         </div>
       </div>
     );
