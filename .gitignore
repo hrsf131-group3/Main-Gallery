@@ -22,6 +22,6 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
-bundle
+client/dist/bundle.js
 
 node_modules
