@@ -8,7 +8,7 @@ const app = express();
 const PORT = 8040;
 
 app.use(bodyParser.json());
-app.use('/listings/:id', express.static('client/dist'));
+app.use('/gallery/:id', express.static('client/dist'));
 
 
 // app.get('/listings/:id/db', controller.getAll);
@@ -18,5 +18,5 @@ app.listen(PORT, () => {
 });
 
 // app.get('/db', controller.get);
-app.get('/listings/:id/db', controller.getListings);
+app.get('/*/:id/homesData', controller.getListings);
 

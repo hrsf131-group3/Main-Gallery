@@ -8,10 +8,12 @@
   overflow: hidden;
   border: 1px solid white;
   border-radius: 8px;
+  outline: none;
 }
 .zoom {
   display: inherit;
   transition: transform .5s ease;
+  cursor: pointer;
 }
 .right-main-gallery {
   flex-direction: column;
