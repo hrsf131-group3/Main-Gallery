@@ -54,7 +54,7 @@ class Modal extends React.Component {
           <div className={styles['listing-details']}>
           <p>{this.props.listing.address} | ${numberWithCommas(price)} | {this.props.listing.bed} Beds {this.props.listing.bath} Baths</p>
           </div>
-          <GalleryModal listing={this.props.listing}/>
+          {this.props.listing.images.map((url, index) => <GalleryModal id={index} url={url} listing={this.props.listing}/>)}
         </div>
       </div>
     );

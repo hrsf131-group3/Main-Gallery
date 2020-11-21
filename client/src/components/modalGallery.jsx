@@ -7,6 +7,8 @@ class GalleryModal extends React.Component {
     this.state = {};
   }
 
+
+
   render() {
     let images = this.props.listing.images;
     let counter = 0;
