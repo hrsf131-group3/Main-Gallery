@@ -19,7 +19,7 @@ class App extends React.Component {
   componentDidMount() {
     //udpate to axios get request to get the dummy data from the server side
     //this.setState({groceries: dummyData})
-    axios.get(`${window.location}db`)
+    axios.get(`${window.location}homesData`)
     //http://localhost:8040/listings/1/
     .then((res) => {
       this.setState({listing: res.data})
@@ -38,9 +38,9 @@ class App extends React.Component {
     } else {
       id++;
     }
-    window.location.assign(`http://localhost:8040/listings/${id}/`)
-    console.log('URL: ', `http://localhost:8040/listings/${id}/`)
-    axios.get(`http://localhost:8040/listings/${id}/db`)
+    window.location.assign(`http://localhost:8040/gallery/${id}/`)
+    console.log('URL: ', `http://localhost:8040/gallery/${id}/`)
+    axios.get(`http://localhost:8040/gallery/${id}/db`)
     //http://localhost:8040/listings/1/
     .then((res) => {
       this.setState({listing: res.data})
@@ -56,9 +56,9 @@ class App extends React.Component {
     if (id === 0) {
       id = 100;
     }
-    window.location.assign(`http://localhost:8040/listings/${id}/`)
-    console.log('URL: ', `http://localhost:8040/listings/${id}/`)
-    axios.get(`http://localhost:8040/listings/${id}/db`)
+    window.location.assign(`http://localhost:8040/gallery/${id}/`)
+    console.log('URL: ', `http://localhost:8040/gallery/${id}/`)
+    axios.get(`http://localhost:8040/gallery/${id}/db`)
     //http://localhost:8040/listings/1/
     .then((res) => {
       this.setState({listing: res.data})

@@ -68,6 +68,7 @@ function listingGalleryGenerator(currentFolder) {
 function seedDB(entries) {
   let created = 1;
   let folder = 1;
+  let address= '232 Clinton Park';
   let price = 1875000;
   let bed = 4;
   let bath = 3;
@@ -75,23 +76,26 @@ function seedDB(entries) {
     // Image folder assignment and url generator
     let images = listingGalleryGenerator(folder);
     if(folder === 1) {
+      address= '232 Clinton Park';
       price = 1875000;
       bed = 4;
       bath = 3;
     }
     if(folder === 2) {
+      address= '232 Clinton Park';
       price = 65000000;
       bed = 10;
       bath = 7;
     }
     if(folder === 3) {
+      address= '23800 Malibu Crest Dr';
       price = 1495000;
       bed = 4;
       bath = 2;
       folder = 0;
     }
     // Faker address
-    var address = faker.address.streetAddress();
+    // var address = faker.address.streetAddress();
     // Call to write to database
     Schema.write(createRecord(created, address, price, bed, bath, images), (err, data) => {
       if (err) {

@@ -19,3 +19,7 @@ app.listen(PORT, () => {
 
 // app.get('/db', controller.get);
 app.get('/*/:id/homesData', controller.getListings);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 680aa784baf2cd0f95a80507380d4e8443b5f892

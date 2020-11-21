@@ -12,27 +12,40 @@
 .two-right-photo {
   width: 49.5%;
   margin-bottom: 8px;
+  cursor: pointer;
 
 }
 .two-left-photo {
   width: 49.5%;
+  height: auto;
   margin-right: 8px;
   margin-bottom: 8px;
+  cursor: pointer;
+
 }
 .three-left-photo {
   width: 32.8%;
   margin-right: 8px;
   margin-bottom: 8px;
+  cursor: pointer;
+
 }
 .three-middle-photo {
   width: 32.8%;
   margin-right: 8px;
   margin-bottom: 8px;
+  cursor: pointer;
+
 }
 .three-right-photo {
   width: 32.9%;
   margin-bottom: 8px;
+  cursor: pointer;
+
 }
 .one-photo {
   width: 99.9%;
+  margin-bottom: 8px;
+  cursor: pointer;
+
 }
