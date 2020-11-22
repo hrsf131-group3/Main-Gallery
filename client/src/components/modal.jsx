@@ -1,12 +1,21 @@
 import React from 'react';
 import styles from '../styles/modal.css';
 import GalleryModal from './modalGallery.jsx';
+import ModalCarousel from './modalCarousel.jsx';
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      show: false,
+    };
+    this.toggleModal = this.toggleModal.bind(this);
   }
-
+  toggleModal(event) {
+    event.preventDefault();
+    this.setState({
+      show: !this.state.show
+    });
+  }
   render() {
     const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
 
@@ -54,8 +63,12 @@ class Modal extends React.Component {
           <div className={styles['listing-details']}>
           <p>{this.props.listing.address} | ${numberWithCommas(price)} | {this.props.listing.bed} Beds {this.props.listing.bath} Baths</p>
           </div>
-          <GalleryModal listing={this.props.listing}/>
+          <GalleryModal listing={this.props.listing} carouselView={this.toggleModal}/>
         </div>
+        <ModalCarousel show={this.state.show}
+          handleClose={this.toggleModal}
+          listing={this.props.listing}
+          />
       </div>
     );
   };

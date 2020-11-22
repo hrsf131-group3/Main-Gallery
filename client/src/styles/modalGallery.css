@@ -1,5 +1,5 @@
 .modal-gallery {
-  display: grid;
+  display: block;
   overflow-y: auto;
   overflow-x: hidden;
   height: 82%;
@@ -10,42 +10,76 @@
   margin: 8px 8px 8px 8px;
 }
 .two-right-photo {
-  width: 49.5%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 49.5%;
+  max-height: 527px;
   margin-bottom: 8px;
+  width: auto;
+  height: auto;
   cursor: pointer;
 
 }
 .two-left-photo {
-  width: 49.5%;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  max-width: 49.5%;
+  max-height: 527px;
   height: auto;
   margin-right: 8px;
   margin-bottom: 8px;
+  width: auto;
+  height: auto;
   cursor: pointer;
 
 }
 .three-left-photo {
-  width: 32.8%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 32.8%;
+  max-height: 379px;
   margin-right: 8px;
   margin-bottom: 8px;
+  width: auto;
+  height: auto;
   cursor: pointer;
 
 }
 .three-middle-photo {
-  width: 32.8%;
+  display: inline-flex;
+  max-width: 32.8%;
+  max-height: 379px;
   margin-right: 8px;
   margin-bottom: 8px;
+  width: auto;
+  height: auto;
   cursor: pointer;
 
 }
 .three-right-photo {
-  width: 32.9%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 32.9%;
+  max-height: 379px;
   margin-bottom: 8px;
+  width: auto;
+  height: auto;
   cursor: pointer;
 
 }
 .one-photo {
-  width: 99.9%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 99.9%;
   margin-bottom: 8px;
+  height: auto;
+  width: auto;
+  height: auto;
   cursor: pointer;
 
 }

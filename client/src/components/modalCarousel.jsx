@@ -17,6 +17,21 @@ class ModalCarousel extends React.Component {
 
     return (
       <div className={this.props.show ? `${styles.modal} ${styles['display-block']}` : `${styles.modal} ${styles['display-none']}`} >
+        <div className={styles['nav-bar']}>
+         <div className={styles['action-btns']}>
+            <button className={styles['action-btn']}>
+              <img className={styles['action-icon']} src="./icons/heart-outline.png"/>
+              <p>Save</p>
+            </button>
+            <button className={styles['action-btn']}>
+              <img className={styles['action-icon']} src="./icons/share.png"/>
+              <p>Share</p>
+            </button>
+            <button className={styles['exit-x-btn']}>
+              <p>X</p>
+            </button>
+          </div>
+        </div>
          <div className={styles['modal-main']} onClick={e => e.stopPropagation()}> { /* stopPropagation on the main modal will stop closing when clicked with in the modal.  */ }
         </div>
       </div>

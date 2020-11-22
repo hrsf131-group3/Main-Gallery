@@ -33,8 +33,7 @@ class Gallery extends React.Component {
       <Modal show={this.state.show}
       handleClose={this.toggleModal}
       listing={this.props.listing[0]}
-      >
-      </Modal>
+      />
     </div>
 
     )

@@ -1,5 +1,4 @@
 import React from 'react';
-import ModalCarousel from './modalCarousel.jsx';
 import styles from '../styles/modalGallery.css';
 
 class GalleryModal extends React.Component {
@@ -7,19 +6,11 @@ class GalleryModal extends React.Component {
     super(props);
     this.state = {
       gallery: null,
-      show: false,
     };
-    this.toggleModal = this.toggleModal.bind(this);
   }
 
   // make a compnent did mount func tied to the loading of the state to have a more semaless intial load
-  toggleModal(event) {
-    event.preventDefault();
-    console.log('Clicked')
-    this.setState({
-      show: !this.state.show
-    });
-  }
+
   render() {
     let images = this.props.listing.images.slice(0);
 
@@ -45,8 +36,8 @@ class GalleryModal extends React.Component {
         if (row === 2) {
           gridOfDivs.push(
             <div className={styles['two-row']}>
-              <img className={styles['two-left-photo']} src={images[counter]} onClick={this.toggleModal}/>
-              <img className={styles['two-right-photo']} src={images[counter+=1]} onClick={this.toggleModal}/>
+              <img className={styles['two-left-photo']} src={images[counter]} onClick={this.props.carouselView}/>
+              <img className={styles['two-right-photo']} src={images[counter+=1]} onClick={this.props.carouselView}/>
             </div>
           )
           counter += 2;
@@ -55,9 +46,9 @@ class GalleryModal extends React.Component {
         if (row === 3) {
           gridOfDivs.push(
             <div className={styles['three-row']}>
-              <img className={styles['three-left-photo']} src={images[counter]} onClick={this.toggleModal}/>
-              <img className={styles['three-middle-photo']} src={images[counter+=1]} onClick={this.toggleModal}/>
-              <img className={styles['three-right-photo']} src={images[counter+=2]} onClick={this.toggleModal}/>
+              <img className={styles['three-left-photo']} src={images[counter]} onClick={this.props.carouselView}/>
+              <img className={styles['three-middle-photo']} src={images[counter+=1]} onClick={this.props.carouselView}/>
+              <img className={styles['three-right-photo']} src={images[counter+=2]} onClick={this.props.carouselView}/>
             </div>
           )
           counter += 3;
@@ -66,7 +57,7 @@ class GalleryModal extends React.Component {
         if (row === 1) {
           gridOfDivs.push(
             <div className={styles['one-row']}>
-              <img className={styles['one-photo']} src={images[counter]} onClick={this.toggleModal}/>
+              <img className={styles['one-photo']} src={images[counter]} onClick={this.props.carouselView}/>
             </div>
           )
           counter += 1;
