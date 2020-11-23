@@ -31,5 +31,5 @@ function getAllListings(callback) {
 }
 
 module.exports.ListingsModel = ListingsModel;
-// module.exports.write = write;
+module.exports.write = write;
 exports.getAllListings = getAllListings;

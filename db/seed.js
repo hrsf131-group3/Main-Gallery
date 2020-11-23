@@ -82,7 +82,7 @@ function seedDB(entries) {
       bath = 3;
     }
     if(folder === 2) {
-      address= '232 Clinton Park';
+      address= '4137 Hidden Oaks Rd';
       price = 65000000;
       bed = 10;
       bath = 7;
