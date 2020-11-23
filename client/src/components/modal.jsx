@@ -6,14 +6,19 @@ class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: 0,
+      url: '',
       show: false,
     };
     this.toggleModal = this.toggleModal.bind(this);
   }
   toggleModal(event) {
+    console.log(event.target.src)
     event.preventDefault();
     this.setState({
-      show: !this.state.show
+      id: event.target.id,
+      url: event.target.src,
+      show: !this.state.show,
     });
   }
   render() {
@@ -66,6 +71,7 @@ class Modal extends React.Component {
           <GalleryModal listing={this.props.listing} carouselView={this.toggleModal}/>
         </div>
         <ModalCarousel show={this.state.show}
+          url={this.state.url}
           handleClose={this.toggleModal}
           listing={this.props.listing}
           />

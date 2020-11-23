@@ -6,7 +6,9 @@ class GalleryModal extends React.Component {
     super(props);
     this.state = {
       gallery: null,
+      current: 0,
     };
+
   }
 
   // make a compnent did mount func tied to the loading of the state to have a more semaless intial load
@@ -36,8 +38,8 @@ class GalleryModal extends React.Component {
         if (row === 2) {
           gridOfDivs.push(
             <div className={styles['two-row']}>
-              <img className={styles['two-left-photo']} src={images[counter]} onClick={this.props.carouselView}/>
-              <img className={styles['two-right-photo']} src={images[counter+=1]} onClick={this.props.carouselView}/>
+              <img id={counter} className={styles['two-left-photo']} src={images[counter]} onClick={this.props.carouselView}/>
+              <img id={counter+=1} className={styles['two-right-photo']} src={images[counter+=1]} onClick={this.props.carouselView}/>
             </div>
           )
           counter += 2;
@@ -46,9 +48,9 @@ class GalleryModal extends React.Component {
         if (row === 3) {
           gridOfDivs.push(
             <div className={styles['three-row']}>
-              <img className={styles['three-left-photo']} src={images[counter]} onClick={this.props.carouselView}/>
-              <img className={styles['three-middle-photo']} src={images[counter+=1]} onClick={this.props.carouselView}/>
-              <img className={styles['three-right-photo']} src={images[counter+=2]} onClick={this.props.carouselView}/>
+              <img id={counter} className={styles['three-left-photo']} src={images[counter]} onClick={this.props.carouselView}/>
+              <img id={counter+=1} className={styles['three-middle-photo']} src={images[counter+=1]} onClick={this.props.carouselView}/>
+              <img id={counter+=2} className={styles['three-right-photo']} src={images[counter+=2]} onClick={this.props.carouselView}/>
             </div>
           )
           counter += 3;
@@ -57,7 +59,7 @@ class GalleryModal extends React.Component {
         if (row === 1) {
           gridOfDivs.push(
             <div className={styles['one-row']}>
-              <img className={styles['one-photo']} src={images[counter]} onClick={this.props.carouselView}/>
+              <img id={counter} className={styles['one-photo']} src={images[counter]} onClick={this.props.carouselView}/>
             </div>
           )
           counter += 1;

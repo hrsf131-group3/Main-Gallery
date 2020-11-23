@@ -9,7 +9,6 @@
   backdrop-filter: opacity(20%) grayscale(50%);
 }
 .modal-main {
-  overflow: hidden;
   box-sizing:border-box;
   display: inline-block;
   position: absolute;
@@ -21,12 +20,21 @@
   transform: translate(-50%,-50%);
 }
 .nav-bar {
+  display: inline-flex;
   overflow: hidden;
   align-items: center;
   display: flex;
   width: 100%;
   height: 50px;
   padding: 16px 16px 8px;
+}
+.listing-info {
+  display: flex;
+  padding: 8px 16px 0px 0px;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+
 }
 .action-btns {
   display: flex;
@@ -43,6 +51,7 @@
   border-radius: 8px;
   width: auto;
   height: 42px;
+  margin-top: 16px;
   margin-bottom: 8px;
   margin-right: 16px;
   outline: none;
@@ -67,15 +76,16 @@
   outline: none;
   border: none;
   color: white;
-  font-size: 24px;
   cursor: pointer;
-  height: 42px;
   width: auto;
   margin-right: 16px;
 }
 .exit-x-btn p {
   background: none;
   align-self: center;
+  font-size: 24px;
+  justify-content: center;
+  font-style: normal;
 }
 
 .action-btn:hover {
@@ -90,6 +100,26 @@
   font-size: 14px;
 }
 
+.current-photo {
+  overflow: hidden;
+  box-sizing:border-box;
+  display: inline-block;
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.photo-view-count {
+  z-index: 101;
+  display: flex;
+  align-self: center;
+  color:white;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 50%;
+}
 .display-block {
   display: flex;
   animation: fadeIn  ease .5s;
