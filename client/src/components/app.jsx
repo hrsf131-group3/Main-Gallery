@@ -54,7 +54,7 @@ class App extends React.Component {
   previousListing(event) {
     let url = window.location.href.split('/');
     let id = parseInt(url[url.length - 2]);
-    if (id === 0) {
+    if (id === 1) {
       id = 100;
       url[url.length - 2] = id;
     } else {
