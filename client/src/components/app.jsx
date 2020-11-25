@@ -30,18 +30,20 @@ class App extends React.Component {
   }
 
   nextListing(event) {
-    let url = window.location.href
-    console.log('HREF: ', url, '     ',this.state.listing[0].listing_id);
-    let id = this.state.listing[0].listing_id
+    let url = window.location.href.split('/');
+    let id = parseInt(url[url.length - 2]);
+
     if (id === 100) {
       id = 1;
+      url[url.length - 2] = id;
     } else {
       id++;
+      url[url.length - 2] = id;
     }
-    window.location.assign(`http://localhost:8040/gallery/${id}/`)
-    console.log('URL: ', `http://localhost:8040/gallery/${id}/`)
-    axios.get(`http://localhost:8040/gallery/${id}/db`)
-    //http://localhost:8040/listings/1/
+    let prevListing = url.join('/')
+    console.log('New for URL :', prevListing)
+    window.location.assign(prevListing)
+    axios.get(prevListing)
     .then((res) => {
       this.setState({listing: res.data})
     })
@@ -50,16 +52,18 @@ class App extends React.Component {
     });
   }
   previousListing(event) {
-    let url = window.location.href
-    console.log('HREF: ', url, '     ',this.state.listing[0].listing_id);
-    let id = this.state.listing[0].listing_id - 1;
+    let url = window.location.href.split('/');
+    let id = parseInt(url[url.length - 2]);
     if (id === 0) {
       id = 100;
+      url[url.length - 2] = id;
+    } else {
+      id -= 1
+      url[url.length - 2] = id;
     }
-    window.location.assign(`http://localhost:8040/gallery/${id}/`)
-    console.log('URL: ', `http://localhost:8040/gallery/${id}/`)
-    axios.get(`http://localhost:8040/gallery/${id}/db`)
-    //http://localhost:8040/listings/1/
+    let prevListing = url.join('/')
+    window.location.assign(prevListing)
+    axios.get(prevListing)
     .then((res) => {
       this.setState({listing: res.data})
     })
