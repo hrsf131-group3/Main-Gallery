@@ -4,14 +4,35 @@ import styles from '../styles/modalCarousel.css';
 class ModalCarousel extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.toggleModal = this.toggleModal.bind(this);
+    this.state = {
+
+      index: parseInt(this.props.id),
+    }
+    this.handlePrev = this.handlePrev.bind(this);
+    this.handleNext = this.handleNext.bind(this);
   }
-  toggleModal(event) {
+
+
+  handlePrev(event) {
     event.preventDefault();
-    this.setState({
-      show: !this.state.show
-    });
+    let i = this.state.index;
+    if (i == this.blogPostImages.length - 1) {
+        i = 0;
+    } else {
+        i = i + 1;
+    }
+    this.setState({index: i});
+  }
+
+  handleNext(event) {
+    event.preventDefault();
+    let i = this.state.index;
+    if (i === this.blogPostImages.length - 1) {
+        i = 0;
+    } else {
+        i = i + 1;
+    }
+    this.setState({index: i});
   }
 
   render() {
@@ -21,13 +42,13 @@ class ModalCarousel extends React.Component {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     let price = numberWithCommas(this.props.listing.price);
-    let image = this.props.listing.images[this.props.id]
+    let image = this.props.listing.images[parseInt(this.props.id)]
     let address = this.props.listing.address;
     let bed = this.props.listing.bed;
     let bath = this.props.listing.bath;
     let currentImage = this.props.url;
 
-    console.log('id:', this.props.id)
+    console.log('id:', this.props.id + 1)
     return (
       <div className={this.props.show ? `${styles.modal} ${styles['display-block']}` : `${styles.modal} ${styles['display-none']}`} onClick={e => e.stopPropagation()}>
         <div className={styles['nav-bar']}>
@@ -51,9 +72,13 @@ class ModalCarousel extends React.Component {
          <div className={styles['modal-main']}>
          <div className={styles['current-photo-box']}>
           <img className={styles['current-photo']} src={currentImage}/>
+          <div className={styles['photo-nav-btns']}>
+            <button className={styles['nav-btn-prev']} onClick={this.props.handlePrev}> {'<'} </button>
+            <button className={styles['nav-btn-next']}onClick={this.props.handlePrev}>{'>'}</button>
+          </div>
          </div>
          <div className={styles['photo-view-count']}>
-           {this.props.id} of {this.props.listing.images.length}
+           {this.state.index + 1} of {this.props.listing.images.length}
          </div>
         </div>
       </div>

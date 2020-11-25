@@ -13,7 +13,6 @@ class Modal extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
   toggleModal(event) {
-    console.log(event.target.src)
     event.preventDefault();
     this.setState({
       id: event.target.id,
@@ -60,9 +59,9 @@ class Modal extends React.Component {
                 <img className={styles['action-icon']} src="./icons/share.png"/>
                 <p>Share</p>
               </button>
-              <button className={styles['exit-x-btn']}>
-                <img className={styles['exit-icon']} src="./icons/exit-x.png" onClick={this.props.handleClose}/>
-              </button>
+            <button className={styles['exit-x-btn']} onClick={this.props.handleClose}>
+              <p>X</p>
+            </button>
             </div>
           </div>
           <div className={styles['listing-details']}>
@@ -71,6 +70,7 @@ class Modal extends React.Component {
           <GalleryModal listing={this.props.listing} carouselView={this.toggleModal}/>
         </div>
         <ModalCarousel show={this.state.show}
+          id={this.state.id}
           url={this.state.url}
           handleClose={this.toggleModal}
           listing={this.props.listing}

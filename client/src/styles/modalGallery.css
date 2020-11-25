@@ -1,84 +1,102 @@
 .modal-gallery {
-  display: block;
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 82%;
+  z-index: 102;
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  grid-gap: 8px;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 80%;
   width: 99%;
-  border: 1px solid white;
+  border: 8px solid white;
   border-radius: 8px;
   justify-content: center;
-  margin: 8px 8px 8px 8px;
+  /* margin: 8px 8px 8px 8px; */
+}
+.two-row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+.three-row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+.one-row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
 }
 .two-right-photo {
-  display: inline-flex;
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+  max-width: 49%;
+  margin-right: 8px;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  max-width: 49.5%;
-  max-height: 527px;
-  margin-bottom: 8px;
-  width: auto;
-  height: auto;
   cursor: pointer;
-
+  margin-bottom: 8px;
 }
 .two-left-photo {
-  display: inline-block;
-  justify-content: center;
-  align-items: center;
-  max-width: 49.5%;
-  max-height: 527px;
-  height: auto;
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+  max-width: 49%;
+  flex-direction: row;
+  overflow: hidden;
+  cursor: pointer;
   margin-right: 8px;
   margin-bottom: 8px;
-  width: auto;
-  height: auto;
-  cursor: pointer;
-
 }
 .three-left-photo {
-  display: inline-flex;
+  -ms-flex: 33%; /* IE10 */
+  flex: 33%;
+  max-width: 32.5%;
   justify-content: center;
   align-items: center;
-  max-width: 32.8%;
-  max-height: 379px;
+  /* max-width: 32.8%;
+  max-height: 379px; */
+  object-fit: cover;
   margin-right: 8px;
   margin-bottom: 8px;
-  width: auto;
-  height: auto;
   cursor: pointer;
-
 }
 .three-middle-photo {
-  display: inline-flex;
-  max-width: 32.8%;
-  max-height: 379px;
+  -ms-flex: 33%; /* IE10 */
+  flex: 33%;
+  max-width: 32.5%;
+  /* max-width: 32.8%;
+  max-height: 379px; */
+  object-fit: cover;
   margin-right: 8px;
   margin-bottom: 8px;
-  width: auto;
-  height: auto;
   cursor: pointer;
-
 }
 .three-right-photo {
-  display: inline-flex;
+  -ms-flex: 33%; /* IE10 */
+  flex: 33%;
+  max-width: 32.5%;
   justify-content: center;
   align-items: center;
-  max-width: 32.9%;
-  max-height: 379px;
+  /* max-width: 32.9%;
+  max-height: 379px; */
+  object-fit: cover;
   margin-bottom: 8px;
-  width: auto;
-  height: auto;
   cursor: pointer;
-
 }
 .one-photo {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 99.9%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   margin-bottom: 8px;
-  height: auto;
-  width: auto;
   height: auto;
   cursor: pointer;
 
