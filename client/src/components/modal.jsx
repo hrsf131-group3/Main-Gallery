@@ -93,11 +93,11 @@ class Modal extends React.Component {
             </button>
             <div className={styles['action-btns']}>
               <button className={styles['action-btn']}>
-                <img className={styles['action-icon']} src="./icons/heart-outline.png"/>
+                <img className={styles['action-icon']} src="https://s3-us-west-1.amazonaws.com/hackreactor.fec.trulia.photos/icons/heart-outline.png"/>
                 <p>Save</p>
               </button>
               <button className={styles['action-btn']}>
-                <img className={styles['action-icon']} src="./icons/share.png"/>
+                <img className={styles['action-icon']} src="https://s3-us-west-1.amazonaws.com/hackreactor.fec.trulia.photos/icons/share.png"/>
                 <p>Share</p>
               </button>
             <button className={styles['exit-x-btn']} onClick={this.props.handleClose}>
