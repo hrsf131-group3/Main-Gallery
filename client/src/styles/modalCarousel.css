@@ -1,6 +1,7 @@
 .modal {
   z-index: 103;
   display: inline-block;
+  overflow: hidden;
   position: absolute;
   top: 0;
   left: 0;
