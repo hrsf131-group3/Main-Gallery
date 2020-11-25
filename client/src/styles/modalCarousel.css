@@ -64,7 +64,9 @@
   color: rgb(59, 65, 68);
   font-weight: bold;
   font-size: 16px;
-
+}
+.action-btn:hover {
+  background-color: #E8E9EA;
 }
 .action-icon {
   align-self:center;
@@ -136,6 +138,12 @@
   width: 50px;
   outline: none;
   cursor: pointer;
+}
+.nav-btn-prev:hover {
+  background-color: rgba(59, 65, 68, 0.788);
+}
+.nav-btn-next:hover {
+  background-color: rgba(59, 65, 68, 0.788);
 }
 .current-photo {
   overflow: hidden;

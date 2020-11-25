@@ -11,15 +11,56 @@ class Modal extends React.Component {
       show: false,
     };
     this.toggleModal = this.toggleModal.bind(this);
+    this.handlePrev = this.handlePrev.bind(this);
+    this.handleNext = this.handleNext.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
+
   toggleModal(event) {
     event.preventDefault();
     this.setState({
-      id: event.target.id,
+      id: parseInt(event.target.id),
       url: event.target.src,
       show: !this.state.show,
     });
   }
+  closeModal(event) {
+    event.preventDefault();
+    this.setState({
+      show: !this.state.show,
+    });
+  }
+
+  handlePrev(event) {
+    event.preventDefault();
+    let i = this.state.id;
+    let images = this.props.listing.images;
+    if (i === 0) {
+        i = images.length - 1;
+    } else {
+        i = i - 1;
+    }
+    this.setState({
+      id: i,
+      url: images[i]
+    });
+  }
+
+  handleNext(event) {
+    event.preventDefault();
+    let i = this.state.id;
+    let images = this.props.listing.images;
+    if (i === images.length - 1) {
+        i = 0;
+    } else {
+        i = i + 1;
+    }
+    this.setState({
+      id: i,
+      url: images[i]
+    });
+  }
+
   render() {
     const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
 
@@ -67,13 +108,18 @@ class Modal extends React.Component {
           <div className={styles['listing-details']}>
           <p>{this.props.listing.address} | ${numberWithCommas(price)} | {this.props.listing.bed} Beds {this.props.listing.bath} Baths</p>
           </div>
-          <GalleryModal listing={this.props.listing} carouselView={this.toggleModal}/>
+          <GalleryModal
+          listing={this.props.listing}
+          carouselView={this.toggleModal}/>
         </div>
-        <ModalCarousel show={this.state.show}
+        <ModalCarousel
+          show={this.state.show}
           id={this.state.id}
           url={this.state.url}
-          handleClose={this.toggleModal}
           listing={this.props.listing}
+          handleNext={this.handleNext}
+          handlePrev={this.handlePrev}
+          closeModal={this.closeModal}
           />
       </div>
     );

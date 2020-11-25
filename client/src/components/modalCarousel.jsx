@@ -5,34 +5,11 @@ class ModalCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
-      index: parseInt(this.props.id),
+      // currentImage: null,
+      // index: null,
     }
-    this.handlePrev = this.handlePrev.bind(this);
-    this.handleNext = this.handleNext.bind(this);
-  }
-
-
-  handlePrev(event) {
-    event.preventDefault();
-    let i = this.state.index;
-    if (i == this.blogPostImages.length - 1) {
-        i = 0;
-    } else {
-        i = i + 1;
-    }
-    this.setState({index: i});
-  }
-
-  handleNext(event) {
-    event.preventDefault();
-    let i = this.state.index;
-    if (i === this.blogPostImages.length - 1) {
-        i = 0;
-    } else {
-        i = i + 1;
-    }
-    this.setState({index: i});
+    // this.handlePrev = this.handlePrev.bind(this);
+    // this.handleNext = this.handleNext.bind(this);
   }
 
   render() {
@@ -49,6 +26,7 @@ class ModalCarousel extends React.Component {
     let currentImage = this.props.url;
 
     console.log('id:', this.props.id + 1)
+
     return (
       <div className={this.props.show ? `${styles.modal} ${styles['display-block']}` : `${styles.modal} ${styles['display-none']}`} onClick={e => e.stopPropagation()}>
         <div className={styles['nav-bar']}>
@@ -64,7 +42,7 @@ class ModalCarousel extends React.Component {
               <img className={styles['action-icon']} src="./icons/share.png"/>
               <p>Share</p>
             </button>
-            <button className={styles['exit-x-btn']} onClick={this.props.handleClose}>
+            <button className={styles['exit-x-btn']} onClick={this.props.closeModal}>
               <p>X</p>
             </button>
           </div>
@@ -74,11 +52,11 @@ class ModalCarousel extends React.Component {
           <img className={styles['current-photo']} src={currentImage}/>
           <div className={styles['photo-nav-btns']}>
             <button className={styles['nav-btn-prev']} onClick={this.props.handlePrev}> {'<'} </button>
-            <button className={styles['nav-btn-next']}onClick={this.props.handlePrev}>{'>'}</button>
+            <button className={styles['nav-btn-next']}onClick={this.props.handleNext}>{'>'}</button>
           </div>
          </div>
          <div className={styles['photo-view-count']}>
-           {this.state.index + 1} of {this.props.listing.images.length}
+           {parseInt(this.props.id) + 1} of {this.props.listing.images.length}
          </div>
         </div>
       </div>

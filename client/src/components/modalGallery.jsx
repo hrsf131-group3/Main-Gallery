@@ -34,7 +34,6 @@ class GalleryModal extends React.Component {
       let counter = 0;
       let row = 2;
       while (counter < images.length) {
-
         if (row === 2) {
           gridOfDivs.push(
             <div className={styles['two-row']}>
