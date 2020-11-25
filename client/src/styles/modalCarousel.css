@@ -10,6 +10,9 @@
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: opacity(20%) grayscale(50%);
 }
+body.modal-open {
+  overflow: hidden;
+}
 .modal-main {
   box-sizing:border-box;
   display: inline-block;

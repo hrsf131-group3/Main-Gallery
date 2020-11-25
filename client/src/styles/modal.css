@@ -10,6 +10,9 @@
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px) grayscale(50%);
 }
+body.modal-open {
+  overflow: hidden;
+}
 .modal-main {
   overflow: hidden;
   box-sizing:border-box;
