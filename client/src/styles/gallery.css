@@ -5,7 +5,7 @@
   justify-content: center;
   margin: auto;
   height: 446px; /* 446 */
-  width: 992; /* 994 */
+  max-width: 992px !important;
   overflow: hidden;
   border: 1px solid white;
   border-radius: 8px;
