@@ -9,16 +9,12 @@ body {
   flex: 1;
   align-items: center;
   width: 100%;
-  border-bottom: 1px solid #E8E9EA;
-  padding: 0px 16px 0px 16px;
 }
 .trulia-logo-box {
   box-sizing: border-box;
   flex: 0 0 auto;
-  width: 94px;
-  height: 63px;
-  padding: 16px 24px 16px 0px;
-  margin-left: 15px;
+  width: 100%;
+
 }
 .trulia-logo {
   box-sizing: border-box;

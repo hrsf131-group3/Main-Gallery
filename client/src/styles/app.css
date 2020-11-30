@@ -44,3 +44,16 @@
   outline: none;
   cursor: pointer;
 }
+.responsive-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+/* desktop styles */
+/* @media all and (max-width: 800px) {
+  .responsive-div {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+  }
+} */

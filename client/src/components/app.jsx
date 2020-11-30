@@ -79,18 +79,18 @@ class App extends React.Component {
     }
 
     return (
-      <div>
+      <div className={styles['responsive-div']}>
         <Navbar />
         <Details listing={this.state.listing}/>
         <Gallery listing={this.state.listing}/>
-        <div className={styles['navbar']}>
+        {/* <div className={styles['navbar']}>
           <div className={styles['nav-btn-box']}>
           <button className={styles['nav-btn']} onClick={this.previousListing}>Previous</button>
           </div>
           <div className={styles['nav-btn-box']}>
             <button className={styles['nav-btn']} onClick={this.nextListing}>Next</button>
           </div>
-        </div>
+        </div> */}
       </div>
     )
   }
