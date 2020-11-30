@@ -8,16 +8,19 @@ class Gallery extends React.Component {
     super(props);
     this.state = {
       show: false,
+
     };
     this.toggleModal = this.toggleModal.bind(this);
   }
   toggleModal(event) {
     event.preventDefault();
+    document.querySelector("body").style.overflow = 'hidden';
     this.setState({
       show: !this.state.show
     });
   }
   render() {
+
     let images = this.props.listing[0].images;
     return (
       <div className={styles['gallery-container']} onClick={this.toggleModal}>
