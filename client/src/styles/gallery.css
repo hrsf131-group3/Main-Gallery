@@ -65,6 +65,7 @@
   padding: 8px 8px 8px 8px;
 }
 .status-container {
+  position: absolute;
   display: inline-flex;
   margin-left: 1%;
   background-color: white;
@@ -86,8 +87,9 @@
   align-content: center;
 }
 .action-btns {
+  position: absolute;
   display: inline-flex;
-  margin: 0% 0% 0% 67.5%;
+  margin: 0% 0% 0% 73.5%;
   padding: 8px;
 }
 .action-btn {
