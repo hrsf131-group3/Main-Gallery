@@ -14,7 +14,11 @@ class Gallery extends React.Component {
   }
   toggleModal(event) {
     event.preventDefault();
-    document.querySelector("body").style.overflow = 'hidden';
+    if (this.state.show) {
+      document.querySelector("body").style.overflow = 'visible';
+    } else {
+      document.querySelector("body").style.overflow = 'hidden';
+    }
     this.setState({
       show: !this.state.show
     });
