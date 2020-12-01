@@ -17,7 +17,13 @@
 
 ## Usage
 
-> Some usage instructions
+API Access:
+CRUD Operation | Access Point
+-------------- | ------------
+Create | /api/homes/
+Read | /api/homes/{id}
+Update | /api/homes/{id}
+Delete | /api/homes/{id}
 
 ## Requirements
 
