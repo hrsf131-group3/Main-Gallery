@@ -17,7 +17,8 @@ getListings = (req, res) => {
       mongo.db.close();
     } else {
       res.setHeader('Access-Control-Allow-Origin', '*');
-      res.status(200).send(listings);
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).send(JSON.stringify(listings, 0, 2));
       mongo.db.close();
     }
   }
