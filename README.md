@@ -20,10 +20,10 @@
 API Access:
 CRUD Operation | Access Point
 -------------- | ------------
-Create | /api/homes/
-Read | /api/homes/{id}
-Update | /api/homes/{id}
-Delete | /api/homes/{id}
+Create | /v1/homes/
+Read | /v1/homes/{id}
+Update | /v1/homes/{id}
+Delete | /v1/homes/{id}
 
 ## Requirements
 
