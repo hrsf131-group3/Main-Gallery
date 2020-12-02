@@ -22,7 +22,11 @@ class App extends React.Component {
     // axios.get(`${window.location}homesData`)
     //http://localhost:8040/listings/1/
     const pathSplit = window.location.pathname.split('/');
-    axios.get(`http://localhost:8040/api/homes/${pathSplit[2]}`)
+    // axios.get(`api.localhost:8040/homes/${pathSplit[2]}`)
+    axios({
+      method: 'get',
+      url: `http://api.localhost:8040/v1/homes/${pathSplit[2]}`
+    })
     .then((res) => {
       this.setState({listing: res.data})
     })
