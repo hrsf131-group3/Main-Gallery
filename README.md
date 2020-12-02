@@ -184,4 +184,5 @@ npm install
   **Path Parameters:**
   - `id` property id
   - `imageid` image id
+
   **Success Status Code:** `204`
