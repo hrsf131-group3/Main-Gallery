@@ -8,4 +8,3 @@ app.listen(PORT, () => {
 
 // app.get('/db', controller.get);
 // app.get('/*/:id/homesData', controller.getListings);
-
