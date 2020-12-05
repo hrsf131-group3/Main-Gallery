@@ -38,8 +38,23 @@ function createPriceHistory(amt) {
   }
   return priceHistories;
 }
+
+function createStatuses(amt) {
+  const statuses = [];
+  const boolBank = [true, false];
+  for (let count = 0; count < amt; count += 1) {
+    statuses.push({
+      sale: boolBank[_.getRandomInt(0, 1)],
+      pending: boolBank[_.getRandomInt(0, 1)],
+      new: boolBank[_.getRandomInt(0, 1)],
+      construction: boolBank[_.getRandomInt(0, 1)],
+    });
+  }
+  return statuses;
+}
 module.exports = {
   createListings,
   createImageURLs,
   createPriceHistory,
+  createStatuses,
 };

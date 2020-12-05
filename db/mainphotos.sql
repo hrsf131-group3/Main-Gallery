@@ -14,7 +14,6 @@ CREATE TABLE mainphotos.neighborhoods (
 	top_left_latitude  decimal,
   bottom_right_longitude decimal,
   bottom_right_latitude decimal,
-
 	bottom_left_longitude decimal,
 	bottom_left_latitude decimal
 );

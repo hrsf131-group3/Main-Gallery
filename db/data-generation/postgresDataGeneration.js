@@ -1,10 +1,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-loop-func */
 const fs = require('fs');
+const path = require('path');
 const neighborhoods = require('./neighborhoods');
 const propertyListings = require('./propertyListings');
-const images = require('./images');
-const path = require('path');
 const _ = require('./helpers');
 
 function writeIntoCSV(writeStream, entries, cb) {
@@ -104,7 +103,6 @@ function writePropertyListings(amt, neighborhoodEntriesNum) {
 
 function writeImage(amt, propertyEntriesNum) {
   const imageEntries = propertyListings.createImageURLs(amt);
-  console.log(imageEntries);
   const imagesCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'images.csv'));
   imageEntries.forEach((imageEntry) => {
     imageEntry.listing_id = _.getRandomInt(0, propertyEntriesNum - 1);
@@ -113,9 +111,38 @@ function writeImage(amt, propertyEntriesNum) {
   imagesCSV.write(header);
   writeIntoCSV(imagesCSV, imageEntries, () => console.log('Finished writing images'));
 };
-// writeNeighborhoods(5);
-// writeCrimeListings(10, 4);
-// writeSchoolListings(3, 1);
-// writeBusinessListings(10, 2);
-// writePropertyListings(5, 2);
-writeImage(10, 2);
+
+function writePriceHistory(amt) {
+  const priceHistoryEntries = propertyListings.createPriceHistory(amt);
+  const priceHistoryCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'price_histories.csv'));
+  priceHistoryEntries.forEach((priceHistoryEntry, index) => {
+    priceHistoryEntry.listing_id = index;
+  });
+  const header = getHeaderTitles(priceHistoryEntries[0]);
+  priceHistoryCSV.write(header);
+  writeIntoCSV(priceHistoryCSV, priceHistoryEntries, () => console.log('Finished writing price histories'));
+}
+function writeStatuses(amt) {
+  const statusEntries = propertyListings.createStatuses(amt);
+  const statusCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'statuses.csv'));
+  statusEntries.forEach((statusEntry, index) => {
+    statusEntry.listing_id = index;
+  });
+  const header = getHeaderTitles(statusEntries[0]);
+  statusCSV.write(header);
+  writeIntoCSV(statusCSV, statusEntries, () => console.log('Finished writing statuses'));
+}
+
+function writePostgresCSV(amt) {
+  const neighborhoodAmt = amt / 5;
+  writeNeighborhoods(neighborhoodAmt);
+  writeCrimeListings(neighborhoodAmt * 4, neighborhoodAmt);
+  writeSchoolListings(neighborhoodAmt * 2, neighborhoodAmt);
+  writeBusinessListings(neighborhoodAmt * 8, neighborhoodAmt);
+  writePropertyListings(amt, neighborhoodAmt);
+  writeImage(amt * 8, amt);
+  writePriceHistory(amt);
+  writeStatuses(amt);
+}
+
+writePostgresCSV(5);
