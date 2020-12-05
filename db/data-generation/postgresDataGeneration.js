@@ -170,4 +170,4 @@ function writePostgresCSV(amt) {
   writeStatuses(amt);
 }
 
-writePostgresCSV(5);
+writePostgresCSV(process.argv[2]);

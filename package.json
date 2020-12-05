@@ -12,7 +12,8 @@
     "webpack": "webpack -d --watch",
     "seed-database": "node ./db/seed.js",
     "test": "jest",
-    "lint": "./node_modules/.bin/eslint"
+    "lint": "./node_modules/.bin/eslint",
+    "write-postgres-csv": "node ./db/data-generation/postgresDataGeneration.js"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
