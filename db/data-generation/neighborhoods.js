@@ -43,14 +43,13 @@ function createBusinesses(amt) {
   const types = ['Restaurants', 'Groceries', 'Nightlife', 'Cafes', 'Shopping', 'Fitness'];
   for (let count = 0; count < amt; count += 1) {
     businesses.push({
-      type: types(_.getRandomInt(0, types.length - 1)),
+      type: types[_.getRandomInt(0, types.length - 1)],
       name: faker.company.companyName(),
       address: `${fake.streetAddress()}, ${fake.state()}, USA ${fake.zipCode()}`,
     });
   }
   return businesses;
 }
-console.log(createSchools(5));
 module.exports = {
   createNeighborhood,
   createCrimeListing,

@@ -7,7 +7,7 @@ CREATE TABLE mainphotos.property_listings (
   listing_id int,
   neighborhood_id int,
   address ascii,
-  pricing float,
+  price float,
   bedrooms float,
   bath float,
   sq_footage int,
