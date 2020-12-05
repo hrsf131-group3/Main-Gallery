@@ -20,7 +20,9 @@ function createImageURLs(amt) {
   const images = [];
   for (let count = 0; count < amt; count += 1) {
     const randomInt = _.getRandomInt(0, 1000);
-    images.push(`https://hrsf131-sdc.s3-us-west-1.amazonaws.com/${randomInt}.jpg`);
+    images.push({
+      url: `https://hrsf131-sdc.s3-us-west-1.amazonaws.com/${randomInt}.jpg`,
+    });
   }
   return images;
 }
@@ -34,6 +36,7 @@ function createPriceHistory(amt) {
       price: _.getRandomInt(100000, 4000000),
     });
   }
+  return priceHistories;
 }
 module.exports = {
   createListings,

@@ -1,0 +1,121 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-loop-func */
+const fs = require('fs');
+const neighborhoods = require('./neighborhoods');
+const propertyListings = require('./propertyListings');
+const images = require('./images');
+const path = require('path');
+const _ = require('./helpers');
+
+function writeIntoCSV(writeStream, entries, cb) {
+  let count = entries.length - 1;
+  let index = 0;
+  const keys = Object.keys(entries[0]);
+  function write() {
+    let error = false;
+    while (count >= 0 && !error) {
+      const data = keys.reduce((acc, key, keysIndex) => {
+        let newEntry = acc.concat(entries[index][key]);
+        if (keysIndex === keys.length - 1) {
+          newEntry = newEntry.concat('\n');
+        } else {
+          newEntry = newEntry.concat(',');
+        }
+        return newEntry;
+      }, '');
+      if (count === 0) {
+        writeStream.write(data, cb);
+      } else {
+        error = !writeStream.write(data);
+      }
+      count -= 1;
+      index += 1;
+    }
+    if (error) {
+      writeStream.on('drain', write);
+    }
+  }
+  write();
+}
+function getHeaderTitles(entry) {
+  const keys = Object.keys(entry);
+  const header = keys.reduce((acc, key, keysIndex) => {
+    let newEntry = acc.concat(keys[keysIndex]);
+    if (keysIndex === keys.length - 1) {
+      newEntry = newEntry.concat('\n');
+    } else {
+      newEntry = newEntry.concat(',');
+    }
+    return newEntry;
+  }, '');
+  return header;
+}
+function writeNeighborhoods(amt) {
+  const neighborhoodEntries = neighborhoods.createNeighborhood(amt);
+  const neighborhoodsCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'neighborhoods.csv'));
+  const header = getHeaderTitles(neighborhoodEntries[0]);
+  neighborhoodsCSV.write(header, 'utf8');
+  writeIntoCSV(neighborhoodsCSV, neighborhoodEntries, () => console.log('Finished writing neighborhoods'));
+}
+
+function writeCrimeListings(amt, neighborhoodEntriesNum) {
+  const crimeEntries = neighborhoods.createCrimeListings(amt);
+  const crimesCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'crimes.csv'));
+  crimeEntries.forEach((crimeEntry) => {
+    crimeEntry.neighborhood_id = _.getRandomInt(0, neighborhoodEntriesNum - 1);
+  });
+  const header = getHeaderTitles(crimeEntries[0]);
+  crimesCSV.write(header);
+  writeIntoCSV(crimesCSV, crimeEntries, () => console.log('Finished writing crimes'));
+}
+
+function writeSchoolListings(amt, neighborhoodEntriesNum) {
+  const schoolEntries = neighborhoods.createSchools(amt);
+  const schoolsCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'schools.csv'));
+  schoolEntries.forEach((schoolEntry) => {
+    schoolEntry.neighborhood_id = _.getRandomInt(0, neighborhoodEntriesNum - 1);
+  });
+  const header = getHeaderTitles(schoolEntries[0]);
+  schoolsCSV.write(header);
+  writeIntoCSV(schoolsCSV, schoolEntries, () => console.log('Finished writing schools'));
+}
+
+function writeBusinessListings(amt, neighborhoodEntriesNum) {
+  const businessEntries = neighborhoods.createBusinesses(amt);
+  const businessesCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'businesses.csv'));
+  businessEntries.forEach((businessEntry) => {
+    businessEntry.neighborhood_id = _.getRandomInt(0, neighborhoodEntriesNum - 1);
+  });
+  const header = getHeaderTitles(businessEntries[0]);
+  businessesCSV.write(header);
+  writeIntoCSV(businessesCSV, businessEntries, () => console.log('Finished writing businesses'));
+}
+
+function writePropertyListings(amt, neighborhoodEntriesNum) {
+  const propertyEntries = propertyListings.createListings(amt);
+  const propertiesCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'property_listings.csv'));
+  propertyEntries.forEach((propertyEntry) => {
+    propertyEntry.neighborhood_id = _.getRandomInt(0, neighborhoodEntriesNum - 1);
+  });
+  const header = getHeaderTitles(propertyEntries[0]);
+  propertiesCSV.write(header);
+  writeIntoCSV(propertiesCSV, propertyEntries, () => console.log('Finished writing schools'));
+};
+
+function writeImage(amt, propertyEntriesNum) {
+  const imageEntries = propertyListings.createImageURLs(amt);
+  console.log(imageEntries);
+  const imagesCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'images.csv'));
+  imageEntries.forEach((imageEntry) => {
+    imageEntry.listing_id = _.getRandomInt(0, propertyEntriesNum - 1);
+  });
+  const header = getHeaderTitles(imageEntries[0]);
+  imagesCSV.write(header);
+  writeIntoCSV(imagesCSV, imageEntries, () => console.log('Finished writing images'));
+};
+// writeNeighborhoods(5);
+// writeCrimeListings(10, 4);
+// writeSchoolListings(3, 1);
+// writeBusinessListings(10, 2);
+// writePropertyListings(5, 2);
+writeImage(10, 2);

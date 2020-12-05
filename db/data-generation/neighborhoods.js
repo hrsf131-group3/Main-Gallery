@@ -5,15 +5,19 @@ function createNeighborhood(amt) {
   const neighborhoods = [];
   for (let count = 0; count < amt; count += 1) {
     neighborhoods.push({
-      topLeft: [faker.address.latitude(), faker.address.longitude()],
-      topRight: [faker.address.latitude(), faker.address.longitude()],
-      bottomLeft: [faker.address.latitude(), faker.address.longitude()],
-      bottomRight: [faker.address.latitude(), faker.address.longitude()],
+      topLLat: faker.address.latitude(),
+      topLLong: faker.address.longitude(),
+      topRLat: faker.address.latitude(),
+      topRLong: faker.address.longitude(),
+      botLLat: faker.address.latitude(),
+      botLLong: faker.address.longitude(),
+      botRLat: faker.address.latitude(),
+      botRLong: faker.address.longitude(),
     });
   }
   return neighborhoods;
 }
-function createCrimeListing(amt) {
+function createCrimeListings(amt) {
   const crimes = [];
   for (let count = 0; count < amt; count += 1) {
     crimes.push({
@@ -52,7 +56,7 @@ function createBusinesses(amt) {
 }
 module.exports = {
   createNeighborhood,
-  createCrimeListing,
+  createCrimeListings,
   createSchools,
   createBusinesses,
 };
