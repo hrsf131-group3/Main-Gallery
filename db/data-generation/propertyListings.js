@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const faker = require('faker');
 const _ = require('./helpers.js');
 
@@ -6,7 +7,7 @@ function createListings(amt) {
   const fake = faker.address;
   for (let count = 0; count < amt; count += 1) {
     listings.push({
-      address: `${fake.streetAddress()}, ${fake.state()}, USA ${fake.zipCode()}`,
+      address: `${fake.streetAddress()} ${fake.state()} USA ${fake.zipCode()}`,
       price: _.getRandomInt(500000, 5000000),
       bedrooms: _.getRandomInt(1, 20) * 0.5,
       baths: _.getRandomInt(1, 20) * 0.5,
@@ -31,7 +32,7 @@ function createPriceHistory(amt) {
   const priceHistories = [];
   for (let count = 0; count < amt; count += 1) {
     priceHistories.push({
-      eventDate: faker.date.past(),
+      eventDate: faker.date.past().toLocaleString('default', { 'dateStyle': 'short', 'timeStyle': 'short' }).replace(',', ''),
       eventDescription: faker.lorem.words(_.getRandomInt(1, 4)),
       price: _.getRandomInt(100000, 4000000),
     });
@@ -52,6 +53,7 @@ function createStatuses(amt) {
   }
   return statuses;
 }
+console.log(faker.date.past());
 module.exports = {
   createListings,
   createImageURLs,

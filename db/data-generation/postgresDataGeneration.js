@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-loop-func */
 const fs = require('fs');
@@ -61,7 +62,7 @@ function writeCrimeListings(amt, neighborhoodEntriesNum) {
   const crimeEntries = neighborhoods.createCrimeListings(amt);
   const crimesCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'crimes.csv'));
   crimeEntries.forEach((crimeEntry) => {
-    crimeEntry.neighborhood_id = _.getRandomInt(0, neighborhoodEntriesNum - 1);
+    crimeEntry.neighborhood_id = _.getRandomInt(1, neighborhoodEntriesNum);
   });
   const header = getHeaderTitles(crimeEntries[0]);
   crimesCSV.write(header);
@@ -72,7 +73,7 @@ function writeSchoolListings(amt, neighborhoodEntriesNum) {
   const schoolEntries = neighborhoods.createSchools(amt);
   const schoolsCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'schools.csv'));
   schoolEntries.forEach((schoolEntry) => {
-    schoolEntry.neighborhood_id = _.getRandomInt(0, neighborhoodEntriesNum - 1);
+    schoolEntry.neighborhood_id = _.getRandomInt(1, neighborhoodEntriesNum);
   });
   const header = getHeaderTitles(schoolEntries[0]);
   schoolsCSV.write(header);
@@ -83,7 +84,7 @@ function writeBusinessListings(amt, neighborhoodEntriesNum) {
   const businessEntries = neighborhoods.createBusinesses(amt);
   const businessesCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'businesses.csv'));
   businessEntries.forEach((businessEntry) => {
-    businessEntry.neighborhood_id = _.getRandomInt(0, neighborhoodEntriesNum - 1);
+    businessEntry.neighborhood_id = _.getRandomInt(1, neighborhoodEntriesNum);
   });
   const header = getHeaderTitles(businessEntries[0]);
   businessesCSV.write(header);
@@ -94,29 +95,30 @@ function writePropertyListings(amt, neighborhoodEntriesNum) {
   const propertyEntries = propertyListings.createListings(amt);
   const propertiesCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'property_listings.csv'));
   propertyEntries.forEach((propertyEntry) => {
-    propertyEntry.neighborhood_id = _.getRandomInt(0, neighborhoodEntriesNum - 1);
+    propertyEntry.neighborhood_id = _.getRandomInt(1, neighborhoodEntriesNum);
   });
   const header = getHeaderTitles(propertyEntries[0]);
   propertiesCSV.write(header);
   writeIntoCSV(propertiesCSV, propertyEntries, () => console.log('Finished writing schools'));
-};
+}
 
 function writeImage(amt, propertyEntriesNum) {
   const imageEntries = propertyListings.createImageURLs(amt);
   const imagesCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'images.csv'));
   imageEntries.forEach((imageEntry) => {
-    imageEntry.listing_id = _.getRandomInt(0, propertyEntriesNum - 1);
+    imageEntry.listing_id = _.getRandomInt(1, propertyEntriesNum);
   });
   const header = getHeaderTitles(imageEntries[0]);
   imagesCSV.write(header);
   writeIntoCSV(imagesCSV, imageEntries, () => console.log('Finished writing images'));
-};
+}
 
 function writePriceHistory(amt) {
   const priceHistoryEntries = propertyListings.createPriceHistory(amt);
   const priceHistoryCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'price_histories.csv'));
   priceHistoryEntries.forEach((priceHistoryEntry, index) => {
-    priceHistoryEntry.listing_id = index;
+    priceHistoryEntry.listing_id = index + 1;
+    console.log(priceHistoryEntry.eventDate);
   });
   const header = getHeaderTitles(priceHistoryEntries[0]);
   priceHistoryCSV.write(header);
@@ -126,7 +128,7 @@ function writeStatuses(amt) {
   const statusEntries = propertyListings.createStatuses(amt);
   const statusCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'statuses.csv'));
   statusEntries.forEach((statusEntry, index) => {
-    statusEntry.listing_id = index;
+    statusEntry.listing_id = index + 1;
   });
   const header = getHeaderTitles(statusEntries[0]);
   statusCSV.write(header);

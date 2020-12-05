@@ -44,7 +44,14 @@ CREATE TABLE mainphotos.property_images (
 DROP TABLE IF EXISTS mainphotos.neighborhoods;
 CREATE TABLE mainphotos.neighborhoods (
   neighborhood_id int,
-  name ascii,
+  top_right_longitude decimal,
+	top_right_latitude decimal,
+	top_left_longitude decimal,
+	top_left_latitude  decimal,
+  bottom_right_longitude decimal,
+  bottom_right_latitude decimal,
+	bottom_left_longitude decimal,
+	bottom_left_latitude decimal,
   PRIMARY KEY(neighborhood_id)
 );
 

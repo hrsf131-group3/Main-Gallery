@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const faker = require('faker');
 const _ = require('./helpers.js');
 
@@ -35,7 +36,7 @@ function createSchools(amt) {
   for (let count = 0; count < amt; count += 1) {
     const school = {};
     school.name = faker.lorem.words(_.getRandomInt(1, 3));
-    school.address = `${fake.streetAddress()}, ${fake.state()}, USA ${fake.zipCode()}`;
+    school.address = `${fake.streetAddress()} ${fake.state()} USA ${fake.zipCode()}`;
     schools.push(school);
   }
   return schools;
@@ -48,8 +49,8 @@ function createBusinesses(amt) {
   for (let count = 0; count < amt; count += 1) {
     businesses.push({
       type: types[_.getRandomInt(0, types.length - 1)],
-      name: faker.company.companyName(),
-      address: `${fake.streetAddress()}, ${fake.state()}, USA ${fake.zipCode()}`,
+      name: faker.lorem.words((_.getRandomInt(1, 3))),
+      address: `${fake.streetAddress()} ${fake.state()} USA ${fake.zipCode()}`,
     });
   }
   return businesses;
