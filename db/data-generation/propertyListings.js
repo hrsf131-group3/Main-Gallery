@@ -53,7 +53,6 @@ function createStatuses(amt) {
   }
   return statuses;
 }
-console.log(faker.date.past());
 module.exports = {
   createListings,
   createImageURLs,

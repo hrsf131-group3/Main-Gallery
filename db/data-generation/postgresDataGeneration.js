@@ -32,7 +32,7 @@ function writeIntoCSV(writeStream, entries, cb) {
       index += 1;
     }
     if (error) {
-      writeStream.on('drain', write);
+      writeStream.once('drain', write);
     }
   }
   write();
@@ -55,7 +55,10 @@ function writeNeighborhoods(amt) {
   const neighborhoodsCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'neighborhoods.csv'));
   const header = getHeaderTitles(neighborhoodEntries[0]);
   neighborhoodsCSV.write(header, 'utf8');
-  writeIntoCSV(neighborhoodsCSV, neighborhoodEntries, () => console.log('Finished writing neighborhoods'));
+  writeIntoCSV(neighborhoodsCSV, neighborhoodEntries, () => {
+    neighborhoodsCSV.end();
+    console.log('Finished writing neighborhoods');
+  });
 }
 
 function writeCrimeListings(amt, neighborhoodEntriesNum) {
@@ -66,7 +69,10 @@ function writeCrimeListings(amt, neighborhoodEntriesNum) {
   });
   const header = getHeaderTitles(crimeEntries[0]);
   crimesCSV.write(header);
-  writeIntoCSV(crimesCSV, crimeEntries, () => console.log('Finished writing crimes'));
+  writeIntoCSV(crimesCSV, crimeEntries, () => {
+    crimesCSV.end();
+    console.log('Finished writing crimes');
+  });
 }
 
 function writeSchoolListings(amt, neighborhoodEntriesNum) {
@@ -77,7 +83,10 @@ function writeSchoolListings(amt, neighborhoodEntriesNum) {
   });
   const header = getHeaderTitles(schoolEntries[0]);
   schoolsCSV.write(header);
-  writeIntoCSV(schoolsCSV, schoolEntries, () => console.log('Finished writing schools'));
+  writeIntoCSV(schoolsCSV, schoolEntries, () => {
+    schoolsCSV.end();
+    console.log('Finished writing schools');
+  });
 }
 
 function writeBusinessListings(amt, neighborhoodEntriesNum) {
@@ -88,7 +97,10 @@ function writeBusinessListings(amt, neighborhoodEntriesNum) {
   });
   const header = getHeaderTitles(businessEntries[0]);
   businessesCSV.write(header);
-  writeIntoCSV(businessesCSV, businessEntries, () => console.log('Finished writing businesses'));
+  writeIntoCSV(businessesCSV, businessEntries, () => {
+    businessesCSV.end();
+    console.log('Finished writing businesses');
+  });
 }
 
 function writePropertyListings(amt, neighborhoodEntriesNum) {
@@ -99,7 +111,10 @@ function writePropertyListings(amt, neighborhoodEntriesNum) {
   });
   const header = getHeaderTitles(propertyEntries[0]);
   propertiesCSV.write(header);
-  writeIntoCSV(propertiesCSV, propertyEntries, () => console.log('Finished writing schools'));
+  writeIntoCSV(propertiesCSV, propertyEntries, () => {
+    propertiesCSV.end();
+    console.log('Finished writing property listings');
+  });
 }
 
 function writeImage(amt, propertyEntriesNum) {
@@ -110,7 +125,10 @@ function writeImage(amt, propertyEntriesNum) {
   });
   const header = getHeaderTitles(imageEntries[0]);
   imagesCSV.write(header);
-  writeIntoCSV(imagesCSV, imageEntries, () => console.log('Finished writing images'));
+  writeIntoCSV(imagesCSV, imageEntries, () => {
+    imagesCSV.end();
+    console.log('Finished writing images');
+  });
 }
 
 function writePriceHistory(amt) {
@@ -118,11 +136,13 @@ function writePriceHistory(amt) {
   const priceHistoryCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'price_histories.csv'));
   priceHistoryEntries.forEach((priceHistoryEntry, index) => {
     priceHistoryEntry.listing_id = index + 1;
-    console.log(priceHistoryEntry.eventDate);
   });
   const header = getHeaderTitles(priceHistoryEntries[0]);
   priceHistoryCSV.write(header);
-  writeIntoCSV(priceHistoryCSV, priceHistoryEntries, () => console.log('Finished writing price histories'));
+  writeIntoCSV(priceHistoryCSV, priceHistoryEntries, () => {
+    priceHistoryCSV.end();
+    console.log('Finished writing price histories');
+  });
 }
 function writeStatuses(amt) {
   const statusEntries = propertyListings.createStatuses(amt);
@@ -132,7 +152,10 @@ function writeStatuses(amt) {
   });
   const header = getHeaderTitles(statusEntries[0]);
   statusCSV.write(header);
-  writeIntoCSV(statusCSV, statusEntries, () => console.log('Finished writing statuses'));
+  writeIntoCSV(statusCSV, statusEntries, () => {
+    statusCSV.end();
+    console.log('Finished writing statuses');
+  });
 }
 
 function writePostgresCSV(amt) {
