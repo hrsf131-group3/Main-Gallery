@@ -19,14 +19,20 @@ class App extends React.Component {
   componentDidMount() {
     //udpate to axios get request to get the dummy data from the server side
     //this.setState({groceries: dummyData})
-    axios.get(`${window.location}homesData`)
+    // axios.get(`${window.location}homesData`)
     //http://localhost:8040/listings/1/
-    .then((res) => {
-      this.setState({listing: res.data})
+    const pathSplit = window.location.pathname.split('/');
+    // axios.get(`api.localhost:8040/homes/${pathSplit[2]}`)
+    axios({
+      method: 'get',
+      url: `http://api.localhost:8040/v1/homes/${pathSplit[2]}`
     })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((res) => {
+        this.setState({ listing: res.data })
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   nextListing(event) {
@@ -44,12 +50,12 @@ class App extends React.Component {
     console.log('New for URL :', prevListing)
     window.location.assign(prevListing)
     axios.get(prevListing)
-    .then((res) => {
-      this.setState({listing: res.data})
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((res) => {
+        this.setState({ listing: res.data })
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   previousListing(event) {
     let url = window.location.href.split('/');
@@ -64,12 +70,12 @@ class App extends React.Component {
     let prevListing = url.join('/')
     window.location.assign(prevListing)
     axios.get(prevListing)
-    .then((res) => {
-      this.setState({listing: res.data})
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((res) => {
+        this.setState({ listing: res.data })
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
 
@@ -81,8 +87,8 @@ class App extends React.Component {
     return (
       <div className={styles['responsive-div']}>
         <Navbar />
-        <Details listing={this.state.listing}/>
-        <Gallery listing={this.state.listing}/>
+        <Details listing={this.state.listing} />
+        <Gallery listing={this.state.listing} />
         {/* <div className={styles['navbar']}>
           <div className={styles['nav-btn-box']}>
           <button className={styles['nav-btn']} onClick={this.previousListing}>Previous</button>

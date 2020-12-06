@@ -11,16 +11,18 @@ getListings = (req, res) => {
   const query = listings.ListingsModel.where({ listing_id: req.params.id });
   mongo.connect();
   query.find((err, listings) => {
-   if (err) {
-     res.status(404)
-     console.log(err.message);
-     mongo.db.close();
-   } else {
-      res.status(200).send(listings);
+    if (err) {
+      res.status(404)
+      console.log(err.message);
+      mongo.db.close();
+    } else {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).send(JSON.stringify(listings, 0, 2));
       mongo.db.close();
     }
   }
- )
+  )
 }
 module.exports = {
   getListings
