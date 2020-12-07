@@ -39,7 +39,7 @@ npm install
 ## Server API
 
 ### Add a property
-- POST api.localhost:8040/v1/homes
+- POST localhost:8040/api/v1/listings
 
   **Path Parameters:**
     - `id` property id
@@ -63,7 +63,7 @@ npm install
   ```
 
 ### Get property info
-- GET api.localhost:8040/v1/homes/:id
+- GET localhost:8040/api/v1/listings/:id
 
   **Path Parameters:**
   - `id` property id
@@ -87,7 +87,7 @@ npm install
     }
   ```
 ### Update a property
-- PATCH api.localhost:8040/v1/homes/:id
+- PATCH localhost:8040/api/v1/listings/:id
 
   **Path Parameters:**
   - `id` property id
@@ -110,7 +110,7 @@ npm install
     }
   ```
 ### Delete a property
-- DELETE api.locahost:8040/v1/homes/:id
+- DELETE locahost:8040/api/v1/listings/:id
 
   **Path Parameters:**
   - `id` property id
@@ -119,7 +119,7 @@ npm install
 
 
 ### Add an image to a property
-- POST api.localhost:8040/v1/homes/:id/image
+- POST localhost:8040/api/v1/listings/:id/images
 
   **Path Parameters:**
     - `id` property id
@@ -134,7 +134,7 @@ npm install
   ```
 
 ### Get an image from a property
-- GET api.localhost:8040/v1/homes/:id/images/:imageid
+- GET localhost:8040/api/v1/listings/:id/images/:imageid
 
   **Path Parameters:**
   - `id` property id
@@ -149,7 +149,7 @@ npm install
     }
   ```
 ### Get all images from a property
-- GET api.localhost:8040/v1/homes/:id/images/
+- GET localhost:8040/api/v1/listings/:id/images
 
   **Path Parameters:**
   - `id` property id
@@ -164,7 +164,7 @@ npm install
     }
   ```
 ### Update an image in a property
-- PATCH api.localhost:8040/v1/homes/:id/images/:imageid
+- PATCH localhost:8040/api/v1/listings/:id/images/:imageid
 
   **Path Parameters:**
   - `id` property id
@@ -179,7 +179,7 @@ npm install
     }
   ```
 ### Delete an image from a property
-- DELETE api.locahost:8040/v1/homes/:id/images:imageid
+- DELETE locahost:8040/api/v1/listings/:id/images/:imageid
 
   **Path Parameters:**
   - `id` property id
