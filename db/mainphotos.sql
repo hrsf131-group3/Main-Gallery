@@ -37,8 +37,8 @@ CREATE TABLE mainphotos.property_images (
 
 CREATE TABLE mainphotos.price_history (
   listing_id INT NOT NULL PRIMARY KEY REFERENCES mainphotos.property_listings(listing_id) ON DELETE CASCADE,
-  event_date VARCHAR(50) NOT NULL,
-  event_description VARCHAR(50) NOT NULL,
+  event_date VARCHAR(100) NOT NULL,
+  event_description VARCHAR(100) NOT NULL,
   price INT NOT NULL
 );
 
@@ -53,21 +53,21 @@ CREATE TABLE mainphotos.status (
 CREATE TABLE mainphotos.crimes (
   crime_id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY NOT NULL,
   neighborhood_id INT NOT NULL REFERENCES mainphotos.neighborhoods( neighborhood_id ) ON DELETE CASCADE,
-  type VARCHAR(50) NOT NULL,
-  crime_title VARCHAR(50) NOT NULL,
+  type VARCHAR(100) NOT NULL,
+  crime_title VARCHAR(100) NOT NULL,
   description VARCHAR(1000) NOT NULL
 );
 
 CREATE TABLE mainphotos.schools (
   school_id INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
   neighborhood_id INT NOT NULL REFERENCES mainphotos.neighborhoods( neighborhood_id ) ON DELETE CASCADE,
-  name VARCHAR(20) NOT NULL,
+  name VARCHAR(100) NOT NULL,
   address VARCHAR(100) NOT NULL
 );
 CREATE TABLE mainphotos.businesses (
   business_id INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
   neighborhood_id INT NOT NULL REFERENCES mainphotos.neighborhoods( neighborhood_id ) ON DELETE CASCADE,
-  type VARCHAR(20) NOT NULL,
-  name VARCHAR(30) NOT NULL,
+  type VARCHAR(100) NOT NULL,
+  name VARCHAR(70) NOT NULL,
   address VARCHAR(100) NOT NULL
 );
