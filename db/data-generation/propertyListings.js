@@ -22,7 +22,7 @@ function createImageURL() {
 
 function createPriceHistory() {
   return {
-    eventDate: faker.date.past().toLocaleString('default', { 'dateStyle': 'short', 'timeStyle': 'short' }).replace(',', ''),
+    eventDate: faker.date.past().toLocaleString('default', { dateStyle: 'short', timeStyle: 'short' }).replace(',', ''),
     eventDescription: faker.lorem.words(_.getRandomInt(1, 4)),
     price: _.getRandomInt(100000, 4000000),
   };

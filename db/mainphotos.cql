@@ -33,10 +33,10 @@ CREATE TABLE mainphotos.price_history (
 
 DROP TABLE IF EXISTS mainphotos.property_images;
 CREATE TABLE mainphotos.property_images (
-  image_id int,
+  image_id uuid,
   listing_id int,
   image_url varchar,
-  PRIMARY KEY(image_id)
+  PRIMARY KEY(listing_id, image_id)
 );
 
 DROP TABLE IF EXISTS mainphotos.neighborhoods;
@@ -55,31 +55,31 @@ CREATE TABLE mainphotos.neighborhoods (
 
 DROP TABLE IF EXISTS mainphotos.businesses;
 CREATE TABLE mainphotos.businesses (
-  business_id int,
+  business_id uuid,
   neighborhood_id int,
   name varchar,
   type varchar,
   address varchar,
-  PRIMARY KEY(business_id)
+  PRIMARY KEY(neighborhood_id, business_id)
 );
 
 DROP TABLE IF EXISTS mainphotos.crimes;
 CREATE TABLE mainphotos.crimes (
-  crime_id int,
+  crime_id uuid,
   neighborhood_id int,
   "type" varchar,
   crime_title varchar,
   description text,
-  PRIMARY KEY(crime_id)
+  PRIMARY KEY(neighborhood_id, crime_id)
 );
 
 DROP TABLE IF EXISTS mainphotos.schools;
 CREATE TABLE mainphotos.schools (
-  school_id int,
+  school_id uuid,
   neighborhood_id int,
   name varchar,
   address varchar,
-  PRIMARY KEY(school_id)
+  PRIMARY KEY(neighborhood_id, school_id)
 );
 
 

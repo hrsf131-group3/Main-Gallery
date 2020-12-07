@@ -28,6 +28,7 @@ node_modules
 
 ## Key Files
 *.pem
+safe.js
 
 # CSVs
 
