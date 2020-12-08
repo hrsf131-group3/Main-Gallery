@@ -55,19 +55,19 @@ const _ = require('./helpers');
 //   }
 //   write();
 // }
-// function getHeaderTitles(entry) {
-//   const keys = Object.keys(entry);
-//   const header = keys.reduce((acc, key, keysIndex) => {
-//     let newEntry = acc.concat(keys[keysIndex]);
-//     if (keysIndex === keys.length - 1) {
-//       newEntry = newEntry.concat('\n');
-//     } else {
-//       newEntry = newEntry.concat(',');
-//     }
-//     return newEntry;
-//   }, '');
-//   return header;
-// }
+function getHeaderTitles(entry) {
+  const keys = Object.keys(entry);
+  const header = keys.reduce((acc, key, keysIndex) => {
+    let newEntry = acc.concat(keys[keysIndex]);
+    if (keysIndex === keys.length - 1) {
+      newEntry = newEntry.concat('\n');
+    } else {
+      newEntry = newEntry.concat(',');
+    }
+    return newEntry;
+  }, '');
+  return header;
+}
 function writeNeighborhoods(amt) {
   const neighborhoodsCSV = fs.createWriteStream(path.join('/home2/VSCode/SDC', 'csvs', 'neighborhoods.csv'));
   const header = _.getHeaderTitles(neighborhoods.createNeighborhood());
@@ -180,4 +180,16 @@ function writePostgresCSV(amt) {
   writeStatuses(amt);
 }
 
-writePostgresCSV(process.argv[2]);
+// writePostgresCSV(process.argv[2]);
+
+function writeTest(amt) {
+  const testCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'test.csv'));
+  const header = _.getHeaderTitles(neighborhoods.createNeighborhood());
+  testCSV.write(header, 'utf8');
+  _.writeIntoCSV(testCSV, 'neighborhoods', amt, () => {
+    testCSV.end();
+    console.log('Finished writing neighborhoods');
+  });
+}
+
+writeTest(5);

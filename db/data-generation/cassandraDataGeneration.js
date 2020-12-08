@@ -2,18 +2,19 @@
 /* eslint-disable no-param-reassign */
 const fs = require('fs');
 const path = require('path');
-const neighborhoods = require('./neighborhoods');
-const propertyListings = require('./propertyListings');
-const _ = require('./helpers');
+const neighborhoods = require('./neighborhoods.js');
+const propertyListings = require('./propertyListings.js');
+const _ = require('./helpers.js');
+const csv = require('./csvHelpers.js');
 
 function writeNeighborhoods(amt) {
   const neighborhoodsCSV = fs.createWriteStream(path.join('/home2/VSCode/SDC', 'csvs', 'cassandra-specific', 'neighborhoods.csv'));
-  const header = _.getHeaderTitles(neighborhoods.createNeighborhood());
+  const header = csv.getHeaderTitles(neighborhoods.createNeighborhood());
   const addPropFunc = (neighborhoodEntry, index) => {
     neighborhoodEntry.neighborhood_id = index + 1;
   };
   neighborhoodsCSV.write(header, 'utf8');
-  _.writeIntoCSV(neighborhoodsCSV, 'neighborhoods', amt, () => {
+  csv.writeIntoCSV(neighborhoodsCSV, 'neighborhoods', amt, () => {
     neighborhoodsCSV.end();
     console.log('Finished writing neighborhoods (Cassandra)');
   }, addPropFunc);
@@ -25,9 +26,9 @@ function writePropertyListings(amt, neighborhoodEntriesNum) {
     propertyEntry.neighborhood_id = _.getRandomInt(1, neighborhoodEntriesNum);
     propertyEntry.listing_id = index + 1;
   };
-  const header = _.getHeaderTitles(propertyListings.createListing());
+  const header = csv.getHeaderTitles(propertyListings.createListing());
   propertiesCSV.write(header);
-  _.writeIntoCSV(propertiesCSV, 'propertyListings', amt, () => {
+  csv.writeIntoCSV(propertiesCSV, 'propertyListings', amt, () => {
     propertiesCSV.end();
     console.log('Finished writing property listings (Cassandra)');
   }, addPropFunc);
