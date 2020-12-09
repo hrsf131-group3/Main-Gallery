@@ -13,7 +13,9 @@
     "seed-database": "node ./db/seed.js",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint",
-    "write-postgres-csv": "node ./db/data-generation/postgresDataGeneration.js"
+    "write-postgres-csv": "node ./db/data-generation/postgresDataGeneration.js",
+    "write-cassandra-csv": "node ./db/data-generation/cassandraDataGeneration.js",
+    "seed-postgres": "node ./db/database-insertion/postgreSQLInsertion.js"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -49,6 +51,7 @@
     "mongodb": "3.6.2",
     "mongoose": "^5.10.12",
     "nodemon": "^2.0.6",
+    "pg": "^8.5.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "subdomain": "^1.2.0"
