@@ -13,3 +13,5 @@ COPY mainphotos.property_images(image_url,listing_id,image_id) FROM '/home2/VSCo
 COPY mainphotos.schools(name, address, neighborhood_id, school_id) FROM '/home2/VSCode/SDC/csvs/cassandra-specific/schools.csv' WITH HEADER = TRUE AND delimiter = ',';
 
 COPY mainphotos.property_status(sale,pending,new,construction,listing_id) FROM '/home2/VSCode/SDC/csvs/cassandra-specific/statuses.csv' WITH HEADER = TRUE AND delimiter = ',';
+
+COPY mainphotos.price_history(event_date,event_description,price,listing_id) FROM '/home2/VSCode/SDC/csvs/cassandra-specific/price_histories.csv' WITH HEADER = TRUE AND delimiter = ',';

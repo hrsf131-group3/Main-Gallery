@@ -25,7 +25,7 @@ CREATE TABLE mainphotos.property_status (
 DROP TABLE IF EXISTS mainphotos.price_history;
 CREATE TABLE mainphotos.price_history (
   listing_id int,
-  event_date date,
+  event_date timestamp,
   event_description varchar,
   price float,
   PRIMARY KEY(listing_id)

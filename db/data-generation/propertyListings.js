@@ -28,6 +28,14 @@ function createPriceHistory() {
   };
 }
 
+function createPriceHistoryCass() {
+  return {
+    eventDate: faker.date.past().toISOString(),
+    eventDescription: faker.lorem.words(_.getRandomInt(1, 4)),
+    price: _.getRandomInt(100000, 4000000),
+  };
+}
+
 function createStatus() {
   const boolBank = [true, false];
   return {
@@ -41,5 +49,6 @@ module.exports = {
   createListing,
   createImageURL,
   createPriceHistory,
+  createPriceHistoryCass,
   createStatus,
 };

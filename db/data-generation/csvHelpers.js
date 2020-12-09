@@ -11,6 +11,7 @@ function writeIntoCSV(writeStream, entryType, amt, cb, addPropFunc = () => { }) 
     propertyListings: propertyListings.createListing,
     imageURLs: propertyListings.createImageURL,
     priceHistories: propertyListings.createPriceHistory,
+    priceHistoriesCass: propertyListings.createPriceHistoryCass,
     statuses: propertyListings.createStatus,
   };
   let count = amt;

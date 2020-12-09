@@ -103,11 +103,11 @@ function writePriceHistory(amt) {
   const addPropFunc = (priceHistoryEntry, index) => {
     priceHistoryEntry.listing_id = index + 1;
   };
-  const tempEntry = propertyListings.createPriceHistory();
+  const tempEntry = propertyListings.createPriceHistoryCass();
   addPropFunc(tempEntry);
   const header = csv.getHeaderTitles(tempEntry);
   priceHistoryCSV.write(header);
-  csv.writeIntoCSV(priceHistoryCSV, 'priceHistories', amt, () => {
+  csv.writeIntoCSV(priceHistoryCSV, 'priceHistoriesCass', amt, () => {
     priceHistoryCSV.end();
     console.log('Finished writing price histories');
   }, addPropFunc);
