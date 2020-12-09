@@ -16,7 +16,7 @@ function createListing() {
 function createImageURL() {
   const randomInt = _.getRandomInt(0, 1000);
   return {
-    url: `https://hrsf131-sdc.s3-us-west-1.amazonaws.com/${randomInt}.jpg`,
+    url: `/${randomInt}.jpg`,
   };
 }
 

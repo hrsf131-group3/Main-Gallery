@@ -31,7 +31,7 @@ CREATE TABLE mainphotos.property_listings (
 CREATE TABLE mainphotos.property_images (
   image_id INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
   listing_id INT NOT NULL REFERENCES mainphotos.property_listings(listing_id) ON DELETE CASCADE,
-  url VARCHAR(100) NOT NULL
+  url VARCHAR(50) NOT NULL
 
 );
 

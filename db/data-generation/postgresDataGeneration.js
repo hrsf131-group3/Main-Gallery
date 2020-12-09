@@ -143,10 +143,10 @@ function writeImage(amt, propertyEntriesNum) {
   }, addPropFunc);
 }
 
-function writePriceHistory(amt) {
+function writePriceHistory(amt, propertyEntriesNum) {
   const priceHistoryCSV = fs.createWriteStream(path.join('/home2/VSCode/SDC', 'csvs', 'price_histories.csv'));
-  const addPropFunc = (priceHistoryEntry, index) => {
-    priceHistoryEntry.listing_id = index + 1;
+  const addPropFunc = (priceHistoryEntry) => {
+    priceHistoryEntry.listing_id = _.getRandomInt(1, propertyEntriesNum);
   };
   const header = _.getHeaderTitles(propertyListings.createPriceHistory());
   priceHistoryCSV.write(header);
@@ -180,16 +180,5 @@ function writePostgresCSV(amt) {
   writeStatuses(amt);
 }
 
-// writePostgresCSV(process.argv[2]);
+writePostgresCSV(process.argv[2]);
 
-function writeTest(amt) {
-  const testCSV = fs.createWriteStream(path.join(__dirname, 'csvs', 'test.csv'));
-  const header = _.getHeaderTitles(neighborhoods.createNeighborhood());
-  testCSV.write(header, 'utf8');
-  _.writeIntoCSV(testCSV, 'neighborhoods', amt, () => {
-    testCSV.end();
-    console.log('Finished writing neighborhoods');
-  });
-}
-
-writeTest(5);
