@@ -32,11 +32,16 @@ CREATE TABLE mainphotos.property_images (
   image_id INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
   listing_id INT NOT NULL REFERENCES mainphotos.property_listings(listing_id) ON DELETE CASCADE,
   url VARCHAR(50) NOT NULL
-
 );
 
+CREATE TABLE mainphotos.property_images (
+  image_id INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
+  listing_id INT NOT NULL,
+  url VARCHAR(50) NOT NULL
+);
 CREATE TABLE mainphotos.price_history (
-  listing_id INT NOT NULL PRIMARY KEY REFERENCES mainphotos.property_listings(listing_id) ON DELETE CASCADE,
+  entry_id INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
+  listing_id INT NOT NULL REFERENCES mainphotos.property_listings(listing_id) ON DELETE CASCADE,
   event_date VARCHAR(100) NOT NULL,
   event_description VARCHAR(100) NOT NULL,
   price INT NOT NULL

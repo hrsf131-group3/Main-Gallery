@@ -124,14 +124,14 @@ function writeStatuses(amt) {
 
 function writePostgresCSV(amt) {
   const neighborhoodAmt = amt / 5;
-  // writeNeighborhoods(neighborhoodAmt);
-  // writeCrimeListings(neighborhoodAmt * 4, neighborhoodAmt);
-  // writeSchoolListings(neighborhoodAmt * 2, neighborhoodAmt);
-  // writeBusinessListings(neighborhoodAmt * 8, neighborhoodAmt);
-  // writePropertyListings(amt, neighborhoodAmt);
-  // writeImage(amt * 8, amt);
+  writeNeighborhoods(neighborhoodAmt);
+  writeCrimeListings(neighborhoodAmt * 4, neighborhoodAmt);
+  writeSchoolListings(neighborhoodAmt * 2, neighborhoodAmt);
+  writeBusinessListings(neighborhoodAmt * 8, neighborhoodAmt);
+  writePropertyListings(amt, neighborhoodAmt);
+  writeImage(amt * 8, amt);
   writePriceHistory(amt * 3, amt);
-  // writeStatuses(amt);
+  writeStatuses(amt);
 }
 
 writePostgresCSV(process.argv[2]);
