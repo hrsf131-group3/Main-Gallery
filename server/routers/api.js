@@ -8,6 +8,7 @@ const router = express.Router();
  * CRUD Routes for Properties
  */
 router.post('/v1/homes', (req, res) => {
+  console.log(req.body);
   res.send('post');
 });
 // router.get('/v1/homes/:id', oldController.getListings);

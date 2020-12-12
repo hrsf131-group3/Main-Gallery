@@ -6,16 +6,14 @@ export const errorRate = new Rate('errors');
 
 export const options = {
   stages: [
-    { duration: '30s', target: 200 },
-    { duration: '1m', target: 200 },
+    { duration: '30s', target: 400 },
+    { duration: '1m', target: 400 },
     { duration: '30s', target: 800 },
     { duration: '1m', target: 800 },
-    { duration: '30s', target: 1400 },
-    { duration: '1m', target: 1400 },
-    { duration: '30s', target: 2000 },
-    { duration: '1m', target: 2000 },
-    { duration: '30s', target: 2600 },
-    { duration: '1m', target: 2600 },
+    { duration: '30s', target: 1200 },
+    { duration: '1m', target: 1200 },
+    { duration: '30s', target: 1600 },
+    { duration: '3m', target: 1600 },
     { duration: '2m', target: 0 },
   ],
 };
