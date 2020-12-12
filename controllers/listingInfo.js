@@ -1,11 +1,27 @@
 const db = require('../db/postgreSQLConnection.js');
 
 const listingInfo = (req, res) => {
-  const queryStr = `SELECT a.*,b.entry_id,b.event_date,b.event_description,b.price,c.sale,c.pending,c.new,c.construction,d.image_id,d.url FROM property_listings AS a INNER JOIN price_history AS b ON a.listing_id = b.listing_id INNER JOIN status AS c ON b.listing_id = c.listing_id INNER JOIN property_images AS d ON c.listing_id = d.listing_id WHERE b.listing_id = ${req.params.id}`;
+  const queryStr = `SELECT a.*,c.sale,c.pending,c.new,c.construction,d.image_id,d.url FROM mainphotos.property_listings AS a INNER JOIN mainphotos.status AS c ON a.listing_id = c.listing_id INNER JOIN mainphotos.property_images AS d ON c.listing_id = d.listing_id WHERE c.listing_id = ${req.params.id}`;
+  console.log('here');
   db.client.query(queryStr)
     .then((response) => {
-      console.log(response);
-      res.sendStatus(200);
+      const listingInfo = {
+        topHeader: {
+          sale: response.rows[0].sale,
+          pending: response.rows[0].pending,
+          new: response.rows[0].new,
+          construction: response.rows[0].construction,
+        },
+        listing_id: req.params.id,
+        price: response.rows[0].price,
+        bed: response.rows[0].bedrooms,
+        bath: response.rows[0].baths,
+        images: [],
+      };
+      response.rows.forEach((obj) => listingInfo.images.push(`https://hrsf131-sdc.s3-us-west-1.amazonaws.com${obj.url}`));
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Content-Type', 'application/json');
+      res.send([listingInfo]);
     })
     .catch((err) => console.error(err));
 };

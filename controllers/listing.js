@@ -1,5 +1,5 @@
-var listings = require('../db/schema.js');
-var mongo = require('../db/mongo.js');
+var listings = require('../db_old/schema.js');
+var mongo = require('../db_old/mongo.js');
 
 /* eslint-disable array-callback-return */
 // const schema = require('../db/schema.js');
