@@ -29,6 +29,7 @@ node_modules
 ## Key Files
 *.pem
 safe.js
+newrelic.js
 
 # CSVs
 
