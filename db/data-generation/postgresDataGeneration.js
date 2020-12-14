@@ -80,8 +80,9 @@ function writePropertyListings(amt, neighborhoodEntriesNum) {
 
 function writeImage(amt, propertyEntriesNum) {
   const imagesCSV = fs.createWriteStream(path.join('/home2/VSCode/SDC', 'csvs', 'images.csv'));
-  const addPropFunc = (imageEntry) => {
-    imageEntry.listing_id = _.getRandomInt(1, propertyEntriesNum);
+  const addPropFunc = (imageEntry, index) => {
+    // imageEntry.listing_id = _.getRandomInt(1, propertyEntriesNum);
+    imageEntry.listing_id = index;
   };
   const newEntry = propertyListings.createImageURL();
   addPropFunc(newEntry);
@@ -124,14 +125,14 @@ function writeStatuses(amt) {
 
 function writePostgresCSV(amt) {
   const neighborhoodAmt = amt / 5;
-  writeNeighborhoods(neighborhoodAmt);
-  writeCrimeListings(neighborhoodAmt * 4, neighborhoodAmt);
-  writeSchoolListings(neighborhoodAmt * 2, neighborhoodAmt);
-  writeBusinessListings(neighborhoodAmt * 8, neighborhoodAmt);
-  writePropertyListings(amt, neighborhoodAmt);
+  // writeNeighborhoods(neighborhoodAmt);
+  // writeCrimeListings(neighborhoodAmt * 4, neighborhoodAmt);
+  // writeSchoolListings(neighborhoodAmt * 2, neighborhoodAmt);
+  // writeBusinessListings(neighborhoodAmt * 8, neighborhoodAmt);
+  // writePropertyListings(amt, neighborhoodAmt);
   writeImage(amt * 8, amt);
-  writePriceHistory(amt * 3, amt);
-  writeStatuses(amt);
+  // writePriceHistory(amt * 3, amt);
+  // writeStatuses(amt);
 }
 
 writePostgresCSV(process.argv[2]);

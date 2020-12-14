@@ -16,14 +16,21 @@ function writeIntoCSV(writeStream, entryType, amt, cb, addPropFunc = () => { }) 
   };
   let count = amt;
   let index = 0;
+  let imageIndex = 1;
+  let listingIndex = 1;
   let entry;
   let keys;
   let data;
   function write() {
     let error = false;
     while (count > 0 && !error) {
-      entry = entryTypes[entryType]();
-      addPropFunc(entry, index);
+      // Always pass in the desired imageIndex but only generating image uses a param
+      entry = entryTypes[entryType](imageIndex);
+      if (entryType === 'imageURLs') {
+        addPropFunc(entry, listingIndex);
+      } else {
+        addPropFunc(entry, index);
+      }
       keys = Object.keys(entry);
       data = keys.reduce((acc, key, keysIndex) => {
         let newEntry = acc.concat(entry[key]);
@@ -41,6 +48,10 @@ function writeIntoCSV(writeStream, entryType, amt, cb, addPropFunc = () => { }) 
       }
       count -= 1;
       index += 1;
+      // Every 8 images, increment listing id
+      listingIndex += imageIndex % 8 === 0 ? 1 : 0;
+      // Every 1000, reset image counter
+      imageIndex = imageIndex < 1000 ? imageIndex + 1 : imageIndex = 1;
       if (count % 500000 === 0) {
         console.log(`${entryType}: ${count}`);
       }

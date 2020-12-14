@@ -55,6 +55,7 @@ npm install
         "new": "Boolean",
         "construction": "Boolean"
       },
+      "address": "String",
       "images": [ "String" ],
       "price": "Number",
       "bed": "Number",
@@ -79,6 +80,7 @@ npm install
         "new": "Boolean",
         "construction": "Boolean"
       },
+      "address": "String",
       "images": [ "String" ],
       "listing_id": "Number",
       "price": "Number",
@@ -103,6 +105,7 @@ npm install
         "new": "Boolean",
         "construction": "Boolean"
       },
+      "address": "String",
       "images": [ "String" ],
       "price": "Number",
       "bed": "Number",

@@ -13,10 +13,10 @@ function createListing() {
   };
 }
 
-function createImageURL() {
+function createImageURL(imageIndex) {
   const randomInt = _.getRandomInt(0, 1000);
   return {
-    url: `/${randomInt}.jpg`,
+    url: `/${imageIndex}.jpg`,
   };
 }
 

@@ -1,12 +1,12 @@
 const express = require('express');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const subdomain = require('express-subdomain');
 const apiRouter = require('./routers/api.js');
 const controller = require('../controllers/listing.js');
 
 const app = express();
 
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 app.use(express.json());
 
 app.set('subdomain offset', 1);

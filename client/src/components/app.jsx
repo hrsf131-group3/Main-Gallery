@@ -28,6 +28,7 @@ class App extends React.Component {
       url: `http://api.localhost:8040/v1/homes/${pathSplit[2]}`
     })
       .then((res) => {
+        console.log(res.data);
         this.setState({ listing: res.data })
       })
       .catch((err) => {

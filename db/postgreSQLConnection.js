@@ -1,17 +1,27 @@
 /* eslint-disable no-console */
-const { Client } = require('pg');
+const { Pool } = require('pg');
 const safe = require('../safe.js');
 
-const client = new Client({
+const pool = new Pool({
   user: 'postgres',
   database: 'mainphotos',
   password: safe.DB_PASS,
 });
 
-client.connect()
-  .then(() => console.log('Connected to PostgreSQL'))
-  .catch((err) => console.error(err));
+pool.on('error', (err, client) => {
+  console.error(err);
+  process.exit(-1);
+});
+// const client = new Client({
+//   user: 'postgres',
+//   database: 'mainphotos',
+//   password: safe.DB_PASS,
+// });
+
+// client.connect()
+//   .then(() => console.log('Connected to PostgreSQL'))
+//   .catch((err) => console.error(err));
 
 module.exports = {
-  client,
+  pool,
 };
