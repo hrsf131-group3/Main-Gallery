@@ -1,5 +1,5 @@
 const express = require('express');
-const oldController = require('../../controllers/listing.js');
+// const oldController = require('../../controllers/listing.js');
 const controller = require('../../controllers/listingInfo.js');
 
 const router = express.Router();
