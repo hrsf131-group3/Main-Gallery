@@ -4,6 +4,8 @@ const safe = require('../safe.js');
 
 const pool = new Pool({
   user: 'postgres',
+  host: safe.AWS_LINK,
+  port: 5432,
   database: 'mainphotos',
   password: safe.DB_PASS,
 });
