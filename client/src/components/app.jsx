@@ -25,7 +25,7 @@ class App extends React.Component {
     // axios.get(`api.localhost:8040/homes/${pathSplit[2]}`)
     axios({
       method: 'get',
-      url: `http://api.localhost:8040/v1/homes/${pathSplit[2]}`
+      url: `/api/v1/homes/${pathSplit[2]}`
     })
       .then((res) => {
         console.log(res.data);

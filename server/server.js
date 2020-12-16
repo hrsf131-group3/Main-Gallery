@@ -15,7 +15,8 @@ app.get('/', (req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'default-src *');
   next();
 });
-app.use(subdomain('api', apiRouter));
+app.use('/api', apiRouter);
 app.use('/gallery/:id', express.static('client/dist'));
+app.use('/', express.static('client/dist'));
 
 module.exports = app;
