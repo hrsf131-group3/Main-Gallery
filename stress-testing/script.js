@@ -18,7 +18,7 @@ export const options = {
   ],
 };
 export default function() {
-  const url = `http://api.localhost:8040/v1/homes/${Math.floor(Math.random() * 10000000) + 1}/`;
+  const url = `/api/v1/homes/${Math.floor(Math.random() * 10000000) + 1}/`;
 
   const res = http.get(url);
   const result = check(res, {
