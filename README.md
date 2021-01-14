@@ -19,6 +19,14 @@ An existing micro-service on a property listing site was scaled to 600 requests 
 <img src="https://i.imgur.com/ySPw9WH.png">
 </div>
 
+## Tech used
+- Loader.io
+- New Relic
+- Nginx
+- PostgreSQL
+- Express/Node
+- Docker
+
 ## Server API
 
 ### Add a property
