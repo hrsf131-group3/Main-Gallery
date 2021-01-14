@@ -1,40 +1,23 @@
-# Project Name
+# Trelia Main Gallery
 
-> Project description
+An existing micro-service on a property listing site was scaled to 600 requests per second with 10 million primary listings through database query optimization, load-balancing, and pooling. An iterative process involving stress-testing using New Relic and loader.io to identify bottlenecks was used to determine the where optimizations could be applied. After optimizing, the scaled microservice was hosted on AWS EC2 after being dockerized and horizontally scaled with nginx as the load balancer.
 
-## Related Projects
+## Statistics Showcase
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+### New Relic Instance Stress-Testing
+<div>
+<img src="https://i.imgur.com/VPgp5z2.png">
+</div>
 
-## Table of Contents
+### Loader.io Stress-Testing
+<div>
+<img src="https://i.imgur.com/iGH7uzM.png" height="500">
+</div>
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
-## Usage
-
-
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
-
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
-```
+### Post-Optimization Query Times
+<div>
+<img src="https://i.imgur.com/ySPw9WH.png">
+</div>
 
 ## Server API
 
